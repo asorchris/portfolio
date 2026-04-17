@@ -79,15 +79,15 @@ a { color: inherit; text-decoration: none; }
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
 /* NAV */
-nav { position: fixed; top:0; left:0; right:0; z-index:1000; padding: 18px 0; transition: all .3s; }
+nav { overflow-x: hidden; position: fixed; top:0; left:0; right:0; z-index:1000; padding: 18px 0; transition: all .3s; }
 nav.stuck { background: var(--nav-bg); backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px); border-bottom: 1px solid var(--border); padding: 12px 0; box-shadow: var(--sh-sm); }
-.nav-in { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-.nav-logo { display: flex; align-items: center; gap: 10px; font-family: 'Oxanium', sans-serif; font-weight: 800; font-size: 18px; }
+.nav-in {  min-width: 0; display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.nav-logo {  min-width: 0; display: flex; align-items: center; gap: 10px; font-family: 'Oxanium', sans-serif; font-weight: 800; font-size: 18px; }
 .logo-mark { width: 34px; height: 34px; border-radius: 8px; background: var(--grad); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #fff; }
 .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
 .nav-links a { font-size: 13.5px; font-weight: 500; padding: 7px 14px; border-radius: 7px; color: var(--text-m); transition: all .2s; }
 .nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--glow); }
-.nav-act { display: flex; align-items: center; gap: 10px; }
+.nav-act { flex-shrink: 0; display: flex; align-items: center; gap: 10px; }
 .theme-btn { width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: all .2s; }
 .theme-btn:hover { border-color: var(--accent); }
 .nav-hire { padding: 8px 20px; border-radius: 9px; background: var(--grad); color: #fff; font-family: 'Oxanium', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; transition: all .2s; white-space: nowrap; }
@@ -98,7 +98,10 @@ nav.stuck { background: var(--nav-bg); backdrop-filter: blur(22px); -webkit-back
 .mob-menu.open { display: block; }
 .mob-menu ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
 .mob-menu a { display: block; padding: 10px 14px; border-radius: 8px; font-size: 14px; color: var(--text-m); transition: all .2s; }
-.mob-menu a:hover { color: var(--text); background: var(--glow); }
+.mob-menu a:hover { color: var(--text); background: var(--glow); 
+}
+
+
 
 /* HERO */
 #hero { position: relative; min-height: 100vh; display: flex;  overflow: hidden; padding: 0; margin: 0;}
@@ -297,6 +300,9 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
   .h-scroll { display: none; }
   .test-card { min-width: calc(50% - 10px); }
+   .nav-in {
+    padding: 0 16px;
+  }
 }
 @media(max-width:560px){
   .skills-grid { grid-template-columns: 1fr; }
@@ -320,6 +326,26 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   }
   .test-track {
     gap: 0; /* Clear gap for cleaner mobile sliding */
+  }
+}
+
+@media(max-width:1024px){
+  .h-content {
+    grid-template-columns: 1fr;
+    text-align: center; /* fix alignment */
+  }
+
+  .h-left {
+    max-width: 100%;
+    margin: 0 auto; /* center content */
+  }
+
+  .h-btns {
+    justify-content: center;
+  }
+
+  .h-socials {
+    justify-content: center;
   }
 }
 </style>
@@ -363,7 +389,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   <canvas id="hCanvas"></canvas>
   <div class="h-grid"></div>
   <div class="h-glow-orb"></div>
-  <div class="h-content container">
+  <div class="h-content">
     <div class="h-left">
       <div class="avail-badge reveal"><span class="avail-dot"></span>Available for new projects</div>
       <h1 class="h-name reveal d1"><span class="grad-text">Christopher</span><br>Asor.</h1>
@@ -424,7 +450,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
             <div class="pf-facts">
               <div class="pf-fact">Location: <span>Lagos, Nigeria</span></div>
               <div class="pf-fact">X: <span>@Xtopher0x</span></div>
-              <div class="pf-fact">Email: <span>asorchris2019@gmail.com</span></div>
+              <div class="pf-fact">Email <span>asorchris2019@gmail.com</span></div>
             </div>
           </div>
         </div>
