@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Christopher Asor — Product Marketing & Growth Strategist</title>
+<title>Christopher Asor — Product Operator & Growth Strategist</title>
 <script>
   (function(){
     const s = localStorage.getItem('theme');
@@ -87,7 +87,8 @@ nav.stuck { background:var(--nav-bg); backdrop-filter:blur(22px); -webkit-backdr
 .nav-links { display:flex; align-items:center; gap:2px; list-style:none; }
 .nav-links a { font-size:13.5px; font-weight:500; padding:7px 14px; border-radius:7px; color:var(--text-m); transition:all .2s; white-space:nowrap; }
 .nav-links a:hover,.nav-links a.active { color:var(--text); background:var(--glow); }
-.nav-act { flex-shrink:0; display:flex; align-items:center; gap:10px; }
+/* Theme btn and ham are now always side by side in nav-act */
+.nav-act { flex-shrink:0; display:flex; align-items:center; gap:8px; }
 .theme-btn { width:36px; height:36px; border-radius:8px; border:1px solid var(--border); background:var(--surface); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; transition:all .2s; }
 .theme-btn:hover { border-color:var(--accent); }
 .nav-hire { padding:8px 20px; border-radius:9px; background:var(--grad); color:#fff; font-family:'Oxanium',sans-serif; font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; transition:all .2s; white-space:nowrap; }
@@ -113,7 +114,7 @@ nav.stuck { background:var(--nav-bg); backdrop-filter:blur(22px); -webkit-backdr
 @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(96,165,250,.5)} 50%{box-shadow:0 0 0 7px rgba(96,165,250,0)} }
 .h-name { font-size:clamp(40px,8vw,86px); font-weight:800; line-height:.96; letter-spacing:-.025em; margin-bottom:12px; }
 .h-title { font-family:'Oxanium',sans-serif; font-size:clamp(13px,2.2vw,18px); font-weight:400; color:var(--text-m); margin-bottom:24px; }
-.h-desc { font-size:15px; color:var(--text-m); max-width:500px; line-height:1.8; margin-bottom:38px; }
+.h-desc { font-size:15px; color:var(--text-m); max-width:520px; line-height:1.8; margin-bottom:38px; }
 .h-btns { display:flex; gap:13px; flex-wrap:wrap; margin-bottom:44px; }
 .btn-p { display:inline-flex; align-items:center; gap:8px; padding:13px 28px; border-radius:10px; background:var(--grad); color:#fff; font-family:'Oxanium',sans-serif; font-size:12.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; transition:all .2s; cursor:pointer; border:none; }
 .btn-p:hover { opacity:.88; transform:translateY(-2px); box-shadow:0 8px 28px var(--glow); }
@@ -162,6 +163,8 @@ nav.stuck { background:var(--nav-bg); backdrop-filter:blur(22px); -webkit-backdr
 .pf-facts { display:flex; flex-direction:column; gap:10px; }
 .pf-fact { font-size:13px; color:var(--text-m); }
 .pf-fact span { color:var(--text); font-weight:500; }
+.pf-fact a { color:var(--accent); transition:opacity .2s; }
+.pf-fact a:hover { opacity:.75; }
 
 /* ── SKILLS ── */
 #skills { background:var(--bg2); }
@@ -185,6 +188,8 @@ nav.stuck { background:var(--nav-bg); backdrop-filter:blur(22px); -webkit-backdr
 .tl-card:hover { border-color:var(--border-h); box-shadow:var(--sh); }
 .tl-head { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:14px; flex-wrap:wrap; }
 .tl-co { font-family:'Oxanium',sans-serif; font-size:16px; font-weight:700; margin-bottom:3px; }
+.tl-co a { color:inherit; transition:color .2s; }
+.tl-co a:hover { color:var(--accent); }
 .tl-role { font-size:13px; color:var(--accent); font-weight:500; }
 .tl-period { font-family:'Oxanium',sans-serif; font-size:11px; font-weight:700; letter-spacing:.05em; color:var(--text-m); padding:4px 11px; border-radius:20px; border:1px solid var(--border); white-space:nowrap; flex-shrink:0; }
 .tl-list { list-style:none; display:flex; flex-direction:column; gap:7px; margin-top:6px; }
@@ -195,6 +200,7 @@ nav.stuck { background:var(--nav-bg); backdrop-filter:blur(22px); -webkit-backdr
 /* ── PROJECTS ── */
 #projects { background:var(--bg2); }
 .proj-head { display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:44px; flex-wrap:wrap; }
+.proj-head > div { min-width:0; }
 .proj-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
 .proj-card { border-radius:18px; border:1px solid var(--border); background:var(--card); backdrop-filter:blur(10px); overflow:hidden; transition:all .3s; display:flex; flex-direction:column; }
 .proj-card:hover { border-color:var(--border-h); transform:translateY(-6px); box-shadow:var(--sh-lg); }
@@ -208,10 +214,37 @@ nav.stuck { background:var(--nav-bg); backdrop-filter:blur(22px); -webkit-backdr
 .proj-lnk { display:inline-flex; align-items:center; gap:6px; margin-top:14px; font-size:11.5px; font-family:'Oxanium',sans-serif; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); transition:gap .2s; }
 .proj-lnk:hover { gap:10px; }
 .proj-lnk svg { width:11px; height:11px; }
+.proj-metric { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+.proj-metric span { font-family:'Oxanium',sans-serif; font-size:10.5px; font-weight:700; color:var(--text); background:rgba(96,165,250,.08); border:1px solid rgba(96,165,250,.18); border-radius:6px; padding:3px 9px; }
+
+/* ── CASE STUDY ── */
+.case-study-wrap { margin-top:64px; }
+.case-label { display:inline-flex; align-items:center; gap:8px; padding:5px 14px; border-radius:20px; background:rgba(96,165,250,.1); border:1px solid rgba(96,165,250,.25); font-family:'Oxanium',sans-serif; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:20px; }
+.case-study { border-radius:20px; border:1px solid var(--border-h); background:var(--card); backdrop-filter:blur(14px); overflow:hidden; box-shadow:var(--sh-lg); }
+.case-hero { padding:40px 44px 36px; border-bottom:1px solid var(--border); background:linear-gradient(135deg,rgba(59,130,246,.07) 0%,transparent 60%); }
+.case-hero-top { display:flex; align-items:flex-start; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-bottom:16px; }
+.case-title { font-family:'Oxanium',sans-serif; font-size:28px; font-weight:800; line-height:1.15; }
+.case-sub { font-size:14px; color:var(--text-m); line-height:1.75; max-width:640px; margin-top:10px; }
+.case-metrics { display:flex; gap:28px; flex-wrap:wrap; margin-top:24px; }
+.case-metric { text-align:center; }
+.case-metric-num { font-family:'Oxanium',sans-serif; font-size:30px; font-weight:800; line-height:1; background:var(--grad-t); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.case-metric-lbl { font-size:11px; color:var(--text-m); margin-top:4px; letter-spacing:.04em; }
+.case-body { display:grid; grid-template-columns:1fr 1fr; gap:0; }
+.case-section { padding:32px 44px; border-right:1px solid var(--border); }
+.case-section:nth-child(2n) { border-right:none; }
+.case-section:nth-child(3),.case-section:nth-child(4) { border-top:1px solid var(--border); }
+.case-section-title { font-family:'Oxanium',sans-serif; font-size:12px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.case-section-title::before { content:''; width:16px; height:2px; background:var(--accent); }
+.case-content { font-size:13.5px; color:var(--text-m); line-height:1.8; }
+.case-content ul { list-style:none; display:flex; flex-direction:column; gap:8px; margin-top:8px; }
+.case-content ul li { padding-left:16px; position:relative; }
+.case-content ul li::before { content:'›'; position:absolute; left:0; color:var(--accent); font-weight:700; }
+.case-content strong { color:var(--text); font-weight:600; }
 
 /* ── TESTIMONIALS ── */
 #testimonials { background:var(--bg2); }
-.test-outer { overflow:hidden; margin-top:48px; }
+.test-outer { overflow:hidden; margin-top:48px; cursor:grab; user-select:none; }
+.test-outer:active { cursor:grabbing; }
 .test-track { display:flex; gap:20px; transition:transform .55s cubic-bezier(.25,.8,.25,1); will-change:transform; }
 .test-card { flex:0 0 calc(33.333% - 14px); padding:28px 26px; border-radius:18px; border:1px solid var(--border); background:var(--card); backdrop-filter:blur(10px); display:flex; flex-direction:column; transition:border-color .3s,box-shadow .3s; }
 .test-card:hover { border-color:var(--border-h); box-shadow:var(--sh); }
@@ -229,11 +262,21 @@ nav.stuck { background:var(--nav-bg); backdrop-filter:blur(22px); -webkit-backdr
 .tdot { width:7px; height:7px; border-radius:50%; background:var(--border); cursor:pointer; transition:all .3s; }
 .tdot.on { background:var(--accent); width:20px; border-radius:4px; }
 
+/* ── CTA SECTION ── */
+#cta { position:relative; overflow:hidden; }
+.cta-inner { border-radius:24px; border:1px solid var(--border-h); background:linear-gradient(135deg,rgba(59,130,246,.1) 0%,rgba(10,22,40,0.6) 100%); backdrop-filter:blur(16px); padding:72px 56px; text-align:center; position:relative; overflow:hidden; }
+.cta-inner::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 0%,rgba(59,130,246,.12) 0%,transparent 65%); pointer-events:none; }
+.cta-title { font-family:'Oxanium',sans-serif; font-size:clamp(28px,5vw,52px); font-weight:800; line-height:1.1; margin-bottom:16px; }
+.cta-sub { font-size:16px; color:var(--text-m); max-width:500px; margin:0 auto 36px; line-height:1.7; }
+.cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
 /* ── CONTACT ── */
 .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; margin-top:52px; }
 .ci-blk { margin-bottom:26px; }
 .ci-lbl { font-size:10.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--text-m); margin-bottom:6px; }
 .ci-val { font-family:'Oxanium',sans-serif; font-size:14.5px; font-weight:600; color:var(--text); display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.ci-val a { color:var(--accent); transition:opacity .2s; }
+.ci-val a:hover { opacity:.75; }
 .copy-b { padding:3px 9px; border-radius:5px; font-size:11px; border:1px solid var(--border); background:transparent; color:var(--text-m); cursor:pointer; transition:all .2s; }
 .copy-b:hover { border-color:var(--accent); color:var(--accent); }
 .c-socials { display:flex; gap:9px; flex-wrap:wrap; margin-top:26px; }
@@ -268,6 +311,9 @@ footer { background:var(--surface); border-top:1px solid var(--border); padding:
 @media(max-width:1100px){
   .proj-grid { grid-template-columns:1fr 1fr; }
   .skills-grid { grid-template-columns:1fr 1fr; }
+  .case-body { grid-template-columns:1fr; }
+  .case-section { border-right:none !important; }
+  .case-section:nth-child(3),.case-section:nth-child(4) { border-top:1px solid var(--border); }
 }
 
 /* Tablet / small laptop */
@@ -279,11 +325,13 @@ footer { background:var(--surface); border-top:1px solid var(--border); padding:
   .h-btns { justify-content:flex-start; }
   .about-grid { grid-template-columns:1fr; gap:40px; }
   .test-card { flex:0 0 calc(50% - 10px); }
+  .case-hero { padding:28px 28px 24px; }
+  .cta-inner { padding:48px 32px; }
 }
 
 /* Mobile */
 @media(max-width:768px){
-  /* Nav */
+  /* Nav - theme btn stays visible, ham appears */
   .nav-links,.nav-hire { display:none; }
   .ham { display:flex; }
   .nav-in { padding:0 16px; }
@@ -317,11 +365,23 @@ footer { background:var(--surface); border-top:1px solid var(--border); padding:
 
   /* Projects */
   .proj-grid { grid-template-columns:1fr; }
-  .proj-head { flex-direction:column; }
+  .proj-head { flex-direction:column; align-items:flex-start; }
+  .proj-head .sec-label,
+  .proj-head .sec-title { text-align:left; }
+
+  /* Case study */
+  .case-hero { padding:24px 22px 20px; }
+  .case-section { padding:24px 22px; }
+  .case-metrics { gap:18px; }
+  .case-metric-num { font-size:22px; }
 
   /* Testimonials */
   .test-card { flex:0 0 100%; }
   .test-track { gap:0; }
+
+  /* CTA */
+  .cta-inner { padding:40px 24px; }
+  .cta-btns { flex-direction:column; align-items:center; }
 
   /* Contact */
   .contact-grid { grid-template-columns:1fr; gap:40px; }
@@ -367,9 +427,9 @@ footer { background:var(--surface); border-top:1px solid var(--border); padding:
     </ul>
     <div class="nav-act">
       <button class="theme-btn" id="themeBtn" title="Toggle theme">☀️</button>
-      <a href="#contact" class="nav-hire">Hire Me</a>
+      <a href="#contact" class="nav-hire" style="display:none" id="navHireDesktop">Let's Build</a>
+      <div class="ham" id="ham"><span></span><span></span><span></span></div>
     </div>
-    <div class="ham" id="ham"><span></span><span></span><span></span></div>
   </div>
 </nav>
 
@@ -393,11 +453,11 @@ footer { background:var(--surface); border-top:1px solid var(--border); padding:
     <div class="h-left">
       <div class="avail-badge reveal"><span class="avail-dot"></span>Available for new projects</div>
       <h1 class="h-name reveal d1"><span class="grad-text">Christopher</span><br>Asor.</h1>
-      <p class="h-title reveal d2">Product Marketing &amp; Growth Strategist</p>
-      <p class="h-desc reveal d3">I turn complex products into clear, compelling narratives that drive real adoption. From DeFi protocols to crypto payment platforms and beyond. I bridge the gap between technical innovation and the people it's built for.</p>
+      <p class="h-title reveal d2">Product Marketing &amp; Management· Growth Strategist · </p>
+      <p class="h-desc reveal d3">I help startups and builders turn ideas into products that real people adopt. From zero-to-one positioning to full GTM execution — I close the gap between what you built and the people who need it.</p>
       <div class="h-btns reveal d4">
-        <a href="#projects" class="btn-p">View My Work <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        <a href="#contact" class="btn-s">Get in Touch</a>
+        <a href="#projects" class="btn-p">See My Work <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#contact" class="btn-s">Let's Build Together</a>
       </div>
       <div class="h-socials reveal">
         <a href="https://x.com/Xtopher0x" target="_blank" class="soc-lnk"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Xtopher0x</a>
@@ -406,9 +466,9 @@ footer { background:var(--surface); border-top:1px solid var(--border); padding:
       </div>
     </div>
     <div class="h-stats reveal d2">
-      <div><div class="stat-num">2+</div><div class="stat-lbl">Years in Marketing</div></div>
+      <div><div class="stat-num">15k+</div><div class="stat-lbl">Users Reached Across Products</div></div>
       <div class="stat-sep"></div>
-      <div><div class="stat-num">6+</div><div class="stat-lbl">Brands Worked With</div></div>
+      <div><div class="stat-num">8+</div><div class="stat-lbl">Brands & Startups Scaled</div></div>
       <div class="stat-sep"></div>
       <div><div class="stat-num">1st</div><div class="stat-lbl">Class Hons · CS</div></div>
     </div>
@@ -419,8 +479,8 @@ footer { background:var(--surface); border-top:1px solid var(--border); padding:
 <!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-track">
-    <div class="t-item"><span class="t-dot"></span>Product Marketing</div><div class="t-item"><span class="t-dot"></span>Content Strategy</div><div class="t-item"><span class="t-dot"></span>Web3 &amp; DeFi</div><div class="t-item"><span class="t-dot"></span>GTM Strategy</div><div class="t-item"><span class="t-dot"></span>Crypto Payments</div><div class="t-item"><span class="t-dot"></span>User Onboarding</div><div class="t-item"><span class="t-dot"></span>SEO &amp; Growth</div><div class="t-item"><span class="t-dot"></span>Scriptwriting</div><div class="t-item"><span class="t-dot"></span>Brand Strategy</div><div class="t-item"><span class="t-dot"></span>Product Positioning</div>
-    <div class="t-item"><span class="t-dot"></span>Product Marketing</div><div class="t-item"><span class="t-dot"></span>Content Strategy</div><div class="t-item"><span class="t-dot"></span>Web3 &amp; DeFi</div><div class="t-item"><span class="t-dot"></span>GTM Strategy</div><div class="t-item"><span class="t-dot"></span>Crypto Payments</div><div class="t-item"><span class="t-dot"></span>User Onboarding</div><div class="t-item"><span class="t-dot"></span>SEO &amp; Growth</div><div class="t-item"><span class="t-dot"></span>Scriptwriting</div><div class="t-item"><span class="t-dot"></span>Brand Strategy</div><div class="t-item"><span class="t-dot"></span>Product Positioning</div>
+    <div class="t-item"><span class="t-dot"></span>Product Marketing</div><div class="t-item"><span class="t-dot"></span>GTM Strategy</div><div class="t-item"><span class="t-dot"></span>Web3 & DeFi</div><div class="t-item"><span class="t-dot"></span>Community Growth</div><div class="t-item"><span class="t-dot"></span>Crypto Payments</div><div class="t-item"><span class="t-dot"></span>User Onboarding</div><div class="t-item"><span class="t-dot"></span>Content-Led Growth</div><div class="t-item"><span class="t-dot"></span>Brand Positioning</div><div class="t-item"><span class="t-dot"></span>Execution & Ownership</div><div class="t-item"><span class="t-dot"></span>Product Operator</div>
+    <div class="t-item"><span class="t-dot"></span>Product Marketing</div><div class="t-item"><span class="t-dot"></span>GTM Strategy</div><div class="t-item"><span class="t-dot"></span>Web3 & DeFi</div><div class="t-item"><span class="t-dot"></span>Community Growth</div><div class="t-item"><span class="t-dot"></span>Crypto Payments</div><div class="t-item"><span class="t-dot"></span>User Onboarding</div><div class="t-item"><span class="t-dot"></span>Content-Led Growth</div><div class="t-item"><span class="t-dot"></span>Brand Positioning</div><div class="t-item"><span class="t-dot"></span>Execution & Ownership</div><div class="t-item"><span class="t-dot"></span>Product Operator</div>
   </div>
 </div>
 
@@ -430,9 +490,10 @@ footer { background:var(--surface); border-top:1px solid var(--border); padding:
     <div class="about-grid">
       <div>
         <div class="sec-label reveal">About Me</div>
-        <h2 class="sec-title reveal d1">Where <span class="grad-text">technical depth</span><br>meets compelling story</h2>
-        <p class="about-bio reveal d2">I'm <strong>Christopher Asor</strong>, a product-focused marketer based in <strong>Lagos, Nigeria</strong> with a <strong>First Class B.Tech in Computer Science</strong> from FUTO. My technical foundation gives me a rare edge. I understand what's being built, and I know how to make people care about it.</p>
-        <p class="about-bio reveal d3">I've led product, marketing and growth for <strong>crypto payment platforms</strong>, <strong>AI-powered wallets</strong>, and <strong>tech startups</strong>  turning complex products into clear stories that build trust and drive adoption. I live at the intersection of <strong>product thinking and marketing execution</strong>.</p>
+        <h2 class="sec-title reveal d1">I don't just market products.<br><span class="grad-text">I build them.</span></h2>
+        <p class="about-bio reveal d2">I'm <strong>Christopher Asor,</strong> a product operator and growth strategist based in <strong>Lagos, Nigeria</strong>, with a <strong>First Class B.Tech in Computer Science</strong> from FUTO. My technical background gives me a real edge: I understand what's being built, which means I can position it, explain it, and grow it in ways most marketers simply can't.</p>
+        <p class="about-bio reveal d3">I've worked at the founding level of multiple startups, leading product marketing, designing interfaces, crafting GTM strategies, and building communities from zero. I move fast, take ownership, and ship. I get in the weeds with builders and stay until the product wins.</p>
+        <p class="about-bio reveal d3">My sweet spot is early-stage companies in <strong>Web3, fintech, and emerging tech</strong> teams that need someone who can think strategically and execute collectively and independently.</p>
         <div class="hi-grid reveal d4">
           <div class="hi-card"><div class="hi-ttl">First Class Honours</div><div class="hi-desc">B.Tech Computer Science, FUTO 2019–2024</div></div>
           <div class="hi-card"><div class="hi-ttl">Web3 Native</div><div class="hi-desc">Deep roots in DeFi, wallets &amp; crypto payments</div></div>
@@ -448,11 +509,11 @@ footer { background:var(--surface); border-top:1px solid var(--border); padding:
           </div>
           <div class="pf-body">
             <div class="pf-name">Christopher Asor</div>
-            <div class="pf-role">Product Marketing &amp; Growth Strategist</div>
+            <div class="pf-role">Product Operator &amp; Growth Strategist</div>
             <div class="pf-facts">
-              <div class="pf-fact">Location: <span>Lagos, Nigeria</span></div>
-              <div class="pf-fact">X: <span>@Xtopher0x</span></div>
-              <div class="pf-fact">Email: <span>asorchris2019@gmail.com</span></div>
+              <div class="pf-fact">Location: <span>Lagos, Nigeria · Remote OK</span></div>
+              <div class="pf-fact">X: <span><a href="https://x.com/Xtopher0x" target="_blank">@Xtopher0x</a></span></div>
+              <div class="pf-fact">Email: <span><a href="mailto:asorchris2019@gmail.com">asorchris2019@gmail.com</a></span></div>
             </div>
           </div>
         </div>
@@ -464,9 +525,9 @@ footer { background:var(--surface); border-top:1px solid var(--border); padding:
 <!-- SKILLS -->
 <section id="skills" class="section">
   <div class="container">
-    <div class="sec-label reveal">My Expertise</div>
+    <div class="sec-label reveal">What I Bring</div>
     <h2 class="sec-title reveal d1">Skills &amp; <span class="grad-text">Capabilities</span></h2>
-    <p class="sec-sub reveal d2">Full-stack marketer with technical depth across strategy, content, design, and product.</p>
+    <p class="sec-sub reveal d2">Strategy, execution, and design — all under one roof. No agency overhead, no handholding required.</p>
     <div class="skills-grid">
       <div class="sk-card reveal"><div class="sk-ttl">Product &amp; Growth</div><div class="sk-tags"><span class="sk-tag">Product Positioning</span><span class="sk-tag">GTM Strategy</span><span class="sk-tag">User Onboarding</span><span class="sk-tag">Content-Led Growth</span><span class="sk-tag">SEO Strategy</span><span class="sk-tag">Conversion Optimization</span></div></div>
       <div class="sk-card reveal d1"><div class="sk-ttl">Content &amp; Communication</div><div class="sk-tags"><span class="sk-tag">Technical Writing</span><span class="sk-tag">Scriptwriting</span><span class="sk-tag">Short-form Video</span><span class="sk-tag">Educational Content</span><span class="sk-tag">Storytelling</span><span class="sk-tag">Brand Voice</span></div></div>
@@ -483,40 +544,91 @@ footer { background:var(--surface); border-top:1px solid var(--border); padding:
   <div class="container">
     <div class="sec-label reveal">My Journey</div>
     <h2 class="sec-title reveal d1">Work <span class="grad-text">Experience</span></h2>
-    <p class="sec-sub reveal d2">A consistent track record driving growth and storytelling for innovative products.</p>
+    <p class="sec-sub reveal d2">A track record built on shipping, not just strategizing.</p>
     <div class="timeline">
+
       <div class="tl-item reveal">
         <div class="tl-dot"></div>
         <div class="tl-card">
-          <div class="tl-head"><div><div class="tl-co">Spendex <span style="font-size:11px;color:var(--text-m);font-weight:400">· spendex.co</span></div><div class="tl-role">CMO / Content Lead &amp; Growth Strategist</div></div><div class="tl-period">2025 – Present</div></div>
-          <ul class="tl-list"><li>Owned all content across social channels and led GTM strategy for a live crypto payments product.</li><li>Designed an SEO-driven website targeting high-intent search traffic for crypto payment adoption.</li><li>Created product messaging and video scripts highlighting utility for users and SMBs.</li><li>Tracked performance across all channels and iterated messaging to improve conversion and onboarding.</li></ul>
+          <div class="tl-head"><div>
+            <div class="tl-co"><a href="https://spendex.co" target="_blank">Spendex</a></div>
+            <div class="tl-role">CMO / Content Lead &amp; Growth Strategist</div>
+          </div><div class="tl-period">2025 – Present</div></div>
+          <ul class="tl-list">
+            <li>Owned all content across social channels and led GTM strategy for a live crypto payments product serving individuals and SMBs.</li>
+            <li>Designed an SEO-optimized website targeting high-intent search traffic to drive organic acquisition for crypto payment adoption.</li>
+            <li>Wrote and produced video ad scripts translating complex product utility into clear, compelling narratives.</li>
+            <li>Tracked, measured, and iterated messaging across all channels, driving onboarding for 1000+ beta users and 30+ businesses.</li>
+          </ul>
           <div class="tl-foot"><span class="tag">Crypto Payments</span><span class="tag">GTM</span><span class="tag">SEO</span><span class="tag">Content Strategy</span></div>
         </div>
       </div>
+
       <div class="tl-item reveal">
         <div class="tl-dot"></div>
         <div class="tl-card">
-          <div class="tl-head"><div><div class="tl-co">Fitxn Inc. <span style="font-size:11px;color:var(--text-m);font-weight:400">· fitxn.co</span></div><div class="tl-role">Founding Product Designer &amp; Marketing Lead</div></div><div class="tl-period">2024 · 6-month Contract</div></div>
-          <ul class="tl-list"><li>Joined as a founding team member, shaping product design and marketing from the ground up.</li><li>Led UX/UI design decisions and translated product vision into user-friendly interfaces.</li><li>Developed GTM positioning and early-stage content strategy to drive initial user acquisition.</li></ul>
+          <div class="tl-head"><div>
+            <div class="tl-co"><a href="https://fitxn.co" target="_blank">Fitxn Inc.</a></div>
+            <div class="tl-role">Founding Product Designer &amp; Marketing Lead</div>
+          </div><div class="tl-period">2024 · 6-month Contract</div></div>
+          <ul class="tl-list">
+            <li>Joined as a founding team member, built the product's visual identity, UX/UI design system, and marketing strategy from scratch.</li>
+            <li>Designed user-friendly interfaces that translated a complex fitness platform into a seamless onboarding experience.</li>
+            <li>Developed GTM positioning and early-stage content that helped scale to 10,000+ users and 50+ business partners.</li>
+          </ul>
           <div class="tl-foot"><span class="tag">Health Tech</span><span class="tag">Founding Team</span><span class="tag">UX/UI Design</span><span class="tag">GTM</span></div>
         </div>
       </div>
+
       <div class="tl-item reveal">
         <div class="tl-dot"></div>
         <div class="tl-card">
-          <div class="tl-head"><div><div class="tl-co">Senti Finance <span style="font-size:11px;color:var(--text-m);font-weight:400">· @SentiWallet</span></div><div class="tl-role">Content Lead &amp; GTM Strategist</div></div><div class="tl-period">2024</div></div>
-          <ul class="tl-list"><li>Led early-stage user education and content strategy for an AI-powered Solana non-custodial wallet.</li><li>Created content explaining product utility to both crypto-native and non-technical audiences.</li><li>Oversaw GTM strategy to build early awareness and trust in a competitive wallet market.</li></ul>
+          <div class="tl-head"><div>
+            <div class="tl-co"><a href="https://senti.finance" target="_blank">Senti Finance</a></div>
+            <div class="tl-role">Content Lead &amp; GTM Strategist</div>
+          </div><div class="tl-period">2024</div></div>
+          <ul class="tl-list">
+            <li>Led early-stage user education and content strategy for an AI-powered, non-custodial Solana wallet. A product most users had no prior frame of reference for.</li>
+            <li>Created content that bridged the gap between crypto-native audiences and mainstream users, building trust through clarity.</li>
+            <li>Drove awareness and onboarding to 1,000+ testnet users, establishing early product-market fit ahead of mainnet.</li>
+          </ul>
           <div class="tl-foot"><span class="tag">Solana</span><span class="tag">AI Wallet</span><span class="tag">User Education</span><span class="tag">Web3</span></div>
         </div>
       </div>
+
       <div class="tl-item reveal">
         <div class="tl-dot"></div>
         <div class="tl-card">
-          <div class="tl-head"><div><div class="tl-co">Independent, Web3 &amp; Crypto</div><div class="tl-role">Content &amp; Growth Strategist · Freelance</div></div><div class="tl-period">2023 – Present</div></div>
-          <ul class="tl-list"><li>Created structured content simplifying complex Web3 products for non-technical users.</li><li>Developed strategies focused on trust-building and adoption across DeFi, interoperability, and payments.</li><li>Partnered with Axelar, Triad, and Sophon as brand ambassador, creating educational onboarding content.</li></ul>
+          <div class="tl-head"><div>
+            <div class="tl-co">Novastro</div>
+            <div class="tl-role">X Ambassador &amp; Community Lead</div>
+          </div><div class="tl-period">2024 – 2025</div></div>
+          <ul class="tl-list">
+            <li>Led X content strategy in the months leading up to TGE, producing high-value threads, announcements, and educational content at scale.</li>
+            <li>Built and grew the Novastro X community to over 5,000 followers, establishing consistent brand presence ahead of token launch.</li>
+            <li>Content published across the period drove sustained engagement and positioned Novastro as a credible project ahead of launch (<a href="https://novastro.xyz" target="_blank" style="color:var(--accent)">novastro.xyz</a>).</li>
+          </ul>
+          <div class="tl-foot"><span class="tag">X Ambassador</span><span class="tag">Community Lead</span><span class="tag">TGE</span><span class="tag">Web3</span></div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-head"><div>
+            <div class="tl-co">Independent, Web3 &amp; Crypto</div>
+            <div class="tl-role">Content &amp; Growth Strategist · Freelance</div>
+          </div><div class="tl-period">2023 – Present</div></div>
+          <ul class="tl-list">
+            <li>Created structured educational content simplifying complex Web3 products for non-technical users across DeFi, interoperability, and payments.</li>
+            <li>Axelar: Brand ambassador: onboarded 500+ new community users; content reached 500k+ impressions.</li>
+            <li>Triad: Brand ambassador: produced targeted content that onboarded 100+ active traders to the platform.</li>
+            <li>Sophon: Built an X community of 1,000+ members through consistent, high-quality educational storytelling.</li>
+          </ul>
           <div class="tl-foot"><span class="tag">DeFi</span><span class="tag">Brand Ambassador</span><span class="tag">Web3 Education</span><span class="tag">Freelance</span></div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -525,17 +637,158 @@ footer { background:var(--surface); border-top:1px solid var(--border); padding:
 <section id="projects" class="section">
   <div class="container">
     <div class="proj-head">
-      <div><div class="sec-label reveal">Featured Work</div><h2 class="sec-title reveal d1">Projects &amp; <span class="grad-text">Brands</span></h2></div>
-      <p class="sec-sub reveal d2" style="margin-bottom:0">Companies I've helped position, grow, and market.</p>
+      <div>
+        <div class="sec-label reveal">Featured Work</div>
+        <h2 class="sec-title reveal d1">Projects &amp; <span class="grad-text">Brands</span></h2>
+      </div>
+      <p class="sec-sub reveal d2" style="margin-bottom:0">Products I've helped position, launch, and grow with numbers to show for it.</p>
     </div>
     <div class="proj-grid">
-      <div class="proj-card reveal"><div class="proj-top"><span class="proj-logo">Spendex</span></div><div class="proj-body"><div class="proj-co">Spendex</div><div class="proj-role">CMO / Content Lead &amp; Growth Strategist</div><p class="proj-desc">Crypto payments platform for users &amp; SMBs. Led full content strategy, video ad production, SEO website, and GTM execution for a live product.</p><div class="proj-tags"><span class="tag">Crypto Payments</span><span class="tag">SMB</span><span class="tag">GTM</span></div><a href="https://spendex.co" target="_blank" class="proj-lnk">Visit Spendex <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a></div></div>
-      <div class="proj-card reveal d1"><div class="proj-top"><span class="proj-logo">Senti</span></div><div class="proj-body"><div class="proj-co">Senti Finance</div><div class="proj-role">Content Lead &amp; GTM Strategist</div><p class="proj-desc">AI-powered Solana non-custodial wallet. Built early-stage awareness through clear, accessible content for crypto-native and mainstream users.</p><div class="proj-tags"><span class="tag">Solana</span><span class="tag">AI Wallet</span><span class="tag">Web3</span></div><a href="https://senti.finance" target="_blank" class="proj-lnk">Visit Senti Finance <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a></div></div>
-      <div class="proj-card reveal d2"><div class="proj-top"><span class="proj-logo">Fitxn</span></div><div class="proj-body"><div class="proj-co">Fitxn Inc.</div><div class="proj-role">Founding Product Designer &amp; Marketing Lead</div><p class="proj-desc">Health &amp; fitness tech startup. Joined as founding team member, led UX/UI design, product-market fit, and early-stage GTM strategy.</p><div class="proj-tags"><span class="tag">Health Tech</span><span class="tag">UX Design</span><span class="tag">Founding Team</span></div><a href="https://fitxn.co" target="_blank" class="proj-lnk">Visit Fitxn <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a></div></div>
-      <div class="proj-card reveal"><div class="proj-top"><span class="proj-logo">Axelar</span></div><div class="proj-body"><div class="proj-co">Axelar</div><div class="proj-role">Brand Ambassador &amp; Content Creator</div><p class="proj-desc">Cross-chain interoperability protocol. Produced on-brand educational content to simplify Axelar's technology and onboard new users.</p><div class="proj-tags"><span class="tag">Interoperability</span><span class="tag">Cross-chain</span><span class="tag">Education</span></div></div></div>
-      <div class="proj-card reveal d1"><div class="proj-top"><span class="proj-logo">Triad</span></div><div class="proj-body"><div class="proj-co">Triad</div><div class="proj-role">Brand Ambassador &amp; Content Creator</div><p class="proj-desc">Created on-brand educational and promotional content to build community awareness and drive adoption across the Triad ecosystem.</p><div class="proj-tags"><span class="tag">Web3</span><span class="tag">Brand Ambassador</span><span class="tag">Content</span></div></div></div>
-      <div class="proj-card reveal d2"><div class="proj-top"><span class="proj-logo">Sophon</span></div><div class="proj-body"><div class="proj-co">Sophon</div><div class="proj-role">Brand Ambassador &amp; Content Creator</div><p class="proj-desc">Developed targeted educational content to introduce Sophon's products to new audiences, building trust and driving onboarding through clear storytelling.</p><div class="proj-tags"><span class="tag">Web3</span><span class="tag">User Education</span><span class="tag">Growth</span></div></div></div>
+
+      <div class="proj-card reveal">
+        <div class="proj-top"><span class="proj-logo">Spendex</span></div>
+        <div class="proj-body">
+          <div class="proj-co">Spendex</div>
+          <div class="proj-role">CMO / Content Lead & Growth Strategist</div>
+          <p class="proj-desc">Crypto payments platform for individuals and SMBs. Owned the full content and GTM motion from product messaging to SEO website to video ad production for a live, real-money product.</p>
+          <div class="proj-metric"><span>1000+ Beta Users</span><span>50+ Businesses</span></div>
+          <div class="proj-tags" style="margin-top:10px"><span class="tag">Crypto Payments</span><span class="tag">SMB</span><span class="tag">GTM</span></div>
+          <a href="https://spendex.co" target="_blank" class="proj-lnk">Visit Spendex <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="proj-card reveal d1">
+        <div class="proj-top"><span class="proj-logo">Fitxn</span></div>
+        <div class="proj-body">
+          <div class="proj-co">Fitxn Inc.</div>
+          <div class="proj-role">Founding Product Designer &amp; Marketing Lead</div>
+          <p class="proj-desc">Health and fitness SaaS platform. Joined the founding team and shaped both the product design and go-to-market motion — from UX/UI to early acquisition strategy.</p>
+          <div class="proj-metric"><span>10,000+ Users</span><span>50+ Business Partners</span></div>
+          <div class="proj-tags" style="margin-top:10px"><span class="tag">Health Tech</span><span class="tag">UX Design</span><span class="tag">Founding Team</span></div>
+          <a href="https://fitxn.co" target="_blank" class="proj-lnk">Visit Fitxn <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="proj-card reveal d2">
+        <div class="proj-top"><span class="proj-logo">Senti</span></div>
+        <div class="proj-body">
+          <div class="proj-co">Senti Finance</div>
+          <div class="proj-role">Content Lead &amp; GTM Strategist</div>
+          <p class="proj-desc">AI-powered non-custodial Solana wallet. Built early-stage awareness through education-first content, targeting both crypto-native and mainstream users ahead of mainnet launch.</p>
+          <div class="proj-metric"><span>1,000+ Testnet Users</span></div>
+          <div class="proj-tags" style="margin-top:10px"><span class="tag">Solana</span><span class="tag">AI Wallet</span><span class="tag">Web3</span></div>
+          <a href="https://senti.finance" target="_blank" class="proj-lnk">Visit Senti Finance <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-top"><span class="proj-logo">Novastro</span></div>
+        <div class="proj-body">
+          <div class="proj-co">Novastro</div>
+          <div class="proj-role">X Ambassador &amp; Community Lead</div>
+          <p class="proj-desc">Led X content and community strategy in the lead-up to TGE. Produced high-value threads and announcements at scale, turning a quiet project into a recognized name ahead of token launch.</p>
+          <div class="proj-metric"><span>5,000+ X Community</span><span>Pre-TGE Growth</span></div>
+          <div class="proj-tags" style="margin-top:10px"><span class="tag">Web3</span><span class="tag">Community Lead</span><span class="tag">TGE</span></div>
+          <a href="https://novastro.xyz" target="_blank" class="proj-lnk">Visit Novastro <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="proj-card reveal d1">
+        <div class="proj-top"><span class="proj-logo">Axelar</span></div>
+        <div class="proj-body">
+          <div class="proj-co">Axelar</div>
+          <div class="proj-role">Brand Ambassador &amp; Content Creator</div>
+          <p class="proj-desc">Cross-chain interoperability protocol. Produced structured educational content simplifying Axelar's technology for non-technical audiences, directly contributing to measurable community growth.</p>
+          <div class="proj-metric"><span>500+ New Users Onboarded</span><span>500k+ Impressions</span></div>
+          <div class="proj-tags" style="margin-top:10px"><span class="tag">Interoperability</span><span class="tag">Cross-chain</span><span class="tag">Education</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal d2">
+        <div class="proj-top"><span class="proj-logo">Triad</span></div>
+        <div class="proj-body">
+          <div class="proj-co">Triad</div>
+          <div class="proj-role">Brand Ambassador &amp; Content Creator</div>
+          <p class="proj-desc">Created on-brand educational and promotional content that moved traders from curiosity to action, growing Triad's active user base through clear, trust-building storytelling.</p>
+          <div class="proj-metric"><span>300+ Traders Onboarded</span></div>
+          <div class="proj-tags" style="margin-top:10px"><span class="tag">Web3</span><span class="tag">Brand Ambassador</span><span class="tag">Content</span></div>
+        </div>
+      </div>
+
     </div>
+
+    <!-- CASE STUDY -->
+    <div class="case-study-wrap reveal">
+      <div class="case-label">Deep Dive · Case Study</div>
+      <div class="case-study">
+        <div class="case-hero">
+          <div class="case-hero-top">
+            <div>
+              <div class="case-title">How I helped Fitxn go from<br>zero to 10,000+ users</div>
+              <p class="case-sub">Joining a health-tech startup as a founding team member with no product, no brand, and no users and building the foundation that made all three possible.</p>
+            </div>
+            <span class="tag" style="flex-shrink:0;align-self:flex-start">Fitxn Inc.</span>
+          </div>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="case-metric-num">10k+</div><div class="case-metric-lbl">Total Users</div></div>
+            <div class="case-metric"><div class="case-metric-num">50+</div><div class="case-metric-lbl">Business Partners</div></div>
+            <div class="case-metric"><div class="case-metric-num">0</div><div class="case-metric-lbl">Starting Point</div></div>
+            <div class="case-metric"><div class="case-metric-num">6mo</div><div class="case-metric-lbl">Contract Length</div></div>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-section">
+            <div class="case-section-title">The Problem</div>
+            <div class="case-content">
+              Fitxn had a product concept and a founding team, but nothing else. No brand, no design system, no positioning, no marketing playbook. The fitness tech market is saturated, standing out requires both a product that feels good to use and messaging that makes the value obvious in seconds.
+              <ul>
+                <li>No existing visual identity or UX direction</li>
+                <li>No clear differentiation in a crowded market</li>
+                <li>No early user validation or community</li>
+                <li>Technical founders with limited marketing bandwidth</li>
+              </ul>
+            </div>
+          </div>
+          <div class="case-section">
+            <div class="case-section-title">The Approach</div>
+            <div class="case-content">
+              I came in as a full-stack founding-team member, not a consultant. My approach was to anchor everything in product first, understand what we were building deeply before a single piece of content or design was created.
+              <ul>
+                <li>Ran discovery sessions to understand core user jobs-to-be-done</li>
+                <li>Defined brand positioning: who Fitxn is for and why it's different</li>
+                <li>Built the UX/UI design system from scratch in Figma</li>
+                <li>Mapped the full user journey and identified key onboarding friction points</li>
+              </ul>
+            </div>
+          </div>
+          <div class="case-section">
+            <div class="case-section-title">The Execution</div>
+            <div class="case-content">
+              With positioning locked, I moved into execution mode, building the product interface, the brand assets, and the go-to-market motion in parallel.
+              <ul>
+                <li>Designed all core product screens with a focus on simple, intuitive onboarding</li>
+                <li>Created marketing collateral, social content, and early-acquisition landing pages</li>
+                <li>Developed content strategy targeting both individual users and fitness businesses</li>
+                <li>Built a dual GTM motion: consumer-facing content for users, B2B outreach for business partners</li>
+              </ul>
+            </div>
+          </div>
+          <div class="case-section">
+            <div class="case-section-title">The Results</div>
+            <div class="case-content">
+              Within the 6-month contract period, Fitxn went from a blank canvas to a live product with real traction.
+              <ul>
+                <li><strong>10,000+ users</strong> onboarded to the platform</li>
+                <li><strong>50+ fitness businesses</strong> signed as partners</li>
+                <li>A complete design system and brand identity that scaled beyond my contract</li>
+                <li>A repeatable GTM playbook the team continued executing independently</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -543,26 +796,26 @@ footer { background:var(--surface); border-top:1px solid var(--border); padding:
 <section id="testimonials" class="section">
   <div class="container">
     <div class="sec-label reveal">Social Proof</div>
-    <h2 class="sec-title reveal d1">What People <span class="grad-text">Say</span></h2>
-    <p class="sec-sub reveal d2">Words from teams and founders I've worked with.</p>
-    <div class="test-outer reveal">
+    <h2 class="sec-title reveal d1">What Founders <span class="grad-text">Say</span></h2>
+    <p class="sec-sub reveal d2">From the people I've built alongside.</p>
+    <div class="test-outer reveal" id="testOuter">
       <div class="test-track" id="testTrack">
         <div class="test-card">
           <div class="test-stars">★★★★★</div>
           <div class="test-quote">"</div>
-          <p class="test-txt">Working with Chris at the founding stage was one of our best moves. As a founding designer and marketer, he didn't just give us a brand, he gave us a vision. His technical foundation in CS meant we never had to 'simplify' things for him; he just got it and made it better.</p>
+          <p class="test-txt">Working with Chris at the founding stage was one of our best moves. As a founding designer and marketer, he didn't just give us a brand, he gave us a vision. His technical foundation in CS meant we never had to simplify things for him. He just got it and made it better.</p>
           <div class="test-auth"><div class="auth-av">FK</div><div><div class="auth-name">Franklin Simeon Emeka</div><div class="auth-role">Founder / CEO · Fitxn</div></div></div>
         </div>
         <div class="test-card">
           <div class="test-stars">★★★★★</div>
           <div class="test-quote">"</div>
-          <p class="test-txt">Christopher has a rare ability to understand a product deeply and translate it into messaging that actually resonates. At Spendex, he turned a complex crypto-utility platform into a story people could finally understand. He doesn't just market; he builds the bridge between the code and the consumer.</p>
+          <p class="test-txt">Christopher has a rare ability to understand a product deeply and translate it into messaging that actually resonates. At Spendex, he turned a complex crypto-utility platform into a story people could finally understand. He doesn't just market, he builds the bridge between the code and the consumer.</p>
           <div class="test-auth"><div class="auth-av">OF</div><div><div class="auth-name">Oparah Favour</div><div class="auth-role">Founder / CEO · Spendex</div></div></div>
         </div>
         <div class="test-card">
           <div class="test-stars">★★★★★</div>
           <div class="test-quote">"</div>
-          <p class="test-txt">In the fast-moving Solana ecosystem, trust is everything. Chris's strategy for our GTM and educational content was the key to building that trust. He has a 'Product-First' marketing mindset that is incredibly rare in Web3. He knows how to educate without losing the user's interest.</p>
+          <p class="test-txt">In the fast-moving Solana ecosystem, trust is everything. Chris's strategy for our GTM and educational content was the key to building that trust. He has a product-first marketing mindset that is incredibly rare in Web3. He knows how to educate without losing the user's interest.</p>
           <div class="test-auth"><div class="auth-av">TO</div><div><div class="auth-name">Tomi</div><div class="auth-role">Founder · Senti Finance</div></div></div>
         </div>
       </div>
@@ -579,15 +832,36 @@ footer { background:var(--surface); border-top:1px solid var(--border); padding:
   </div>
 </section>
 
+<!-- CTA SECTION -->
+<section id="cta" class="section">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <div class="sec-label" style="justify-content:center;margin-bottom:20px">Ready to Build?</div>
+      <h2 class="cta-title">Got a product that needs to <span class="grad-text">break through?</span></h2>
+      <p class="cta-sub">If you're building something real and need someone who can own the product narrative, lead GTM, and actually execute, let's talk.</p>
+      <div class="cta-btns">
+        <a href="#contact" class="btn-p">Let's Work Together <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="https://x.com/Xtopher0x" target="_blank" class="btn-s">Find Me on X</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact" class="section">
   <div class="container">
     <div class="sec-label reveal">Get In Touch</div>
-    <h2 class="sec-title reveal d1">Let's <span class="grad-text">Work Together</span></h2>
-    <p class="sec-sub reveal d2">Open to full-time roles, contracts, advisory, and ambassador opportunities in Web3, fintech, other industries and emerging tech.</p>
+    <h2 class="sec-title reveal d1">Let's <span class="grad-text">Build Something</span></h2>
+    <p class="sec-sub reveal d2">Open to full-time roles, contracts, advisory, and ambassador opportunities in Web3, fintech, and emerging tech. If you're building, reach out.</p>
     <div class="contact-grid">
       <div class="reveal">
-        <div class="ci-blk"><div class="ci-lbl">Email</div><div class="ci-val">asorchris2019@gmail.com <button class="copy-b" id="copyBtn" onclick="copyEmail()">Copy</button></div></div>
+        <div class="ci-blk">
+          <div class="ci-lbl">Email</div>
+          <div class="ci-val">
+            <a href="mailto:asorchris2019@gmail.com">asorchris2019@gmail.com</a>
+            <button class="copy-b" id="copyBtn" onclick="copyEmail()">Copy</button>
+          </div>
+        </div>
         <div class="ci-blk"><div class="ci-lbl">Based In</div><div class="ci-val">Lagos, Nigeria · Open to Remote</div></div>
         <div class="ci-blk"><div class="ci-lbl">Availability</div><div class="ci-val"><span class="avail-dot" style="display:inline-block;margin-right:6px"></span>Available for new projects</div></div>
         <div class="c-socials">
@@ -601,7 +875,7 @@ footer { background:var(--surface); border-top:1px solid var(--border); padding:
           <div class="fg"><label class="fl">Your Name</label><input type="text" class="fi" id="fName" placeholder="Jane Doe"></div>
           <div class="fg"><label class="fl">Your Email</label><input type="email" class="fi" id="fEmail" placeholder="jane@company.com"></div>
         </div>
-        <div class="fg"><label class="fl">Subject</label><input type="text" class="fi" id="fSubject" placeholder="Let's collaborate on something great"></div>
+        <div class="fg"><label class="fl">Subject</label><input type="text" class="fi" id="fSubject" placeholder="Let's build something together"></div>
         <div class="fg"><label class="fl">Message</label><textarea class="fta" id="fMsg" placeholder="Tell me about your project or opportunity..."></textarea></div>
         <div class="form-msg" id="formMsg"></div>
         <button class="btn-p" id="sendBtn" style="align-self:flex-start" onclick="sendMsg()">
@@ -621,13 +895,24 @@ footer { background:var(--surface); border-top:1px solid var(--border); padding:
       <ul class="ft-links"><li><a href="#hero">Home</a></li><li><a href="#about">About</a></li><li><a href="#work">Work</a></li><li><a href="#projects">Projects</a></li><li><a href="#testimonials">Testimonials</a></li><li><a href="#contact">Contact</a></li></ul>
     </div>
     <div class="ft-btm">
-      <p class="ft-copy">© 2026 Christopher Asor · All rights reserved · Built in Lagos.</p>
-      <p class="ft-copy">Product Marketing &amp; Growth Strategist</p>
+      <p class="ft-copy">© 2026 Christopher Asor · All rights reserved</p>
+      <p class="ft-copy">Product Operator &amp; Growth Strategist</p>
     </div>
   </div>
 </footer>
 
 <script>
+/* ── SHOW NAV HIRE ON DESKTOP ── */
+(function(){
+  function checkHire(){
+    const hire = document.getElementById('navHireDesktop');
+    if(window.innerWidth > 768) hire.style.display='';
+    else hire.style.display='none';
+  }
+  checkHire();
+  window.addEventListener('resize', checkHire);
+})();
+
 /* ── THEME ── */
 function updateIcon(){ document.getElementById('themeBtn').textContent = document.documentElement.getAttribute('data-theme')==='dark'?'☀️':'🌙'; }
 document.getElementById('themeBtn').addEventListener('click',()=>{ const n=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'; document.documentElement.setAttribute('data-theme',n); localStorage.setItem('theme',n); updateIcon(); });
@@ -637,7 +922,7 @@ updateIcon();
 /* ── NAV ── */
 const nb=document.getElementById('navbar');
 window.addEventListener('scroll',()=>{ nb.classList.toggle('stuck',scrollY>20); updateActive(); });
-function updateActive(){ ['hero','about','skills','work','projects','testimonials','contact'].forEach(id=>{ const el=document.getElementById(id); if(!el) return; const sp=scrollY+120; if(sp>=el.offsetTop&&sp<el.offsetTop+el.offsetHeight){ document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active')); const lnk=document.querySelector(`.nav-links a[href="#${id}"]`); if(lnk) lnk.classList.add('active'); } }); }
+function updateActive(){ ['hero','about','skills','work','projects','testimonials','cta','contact'].forEach(id=>{ const el=document.getElementById(id); if(!el) return; const sp=scrollY+120; if(sp>=el.offsetTop&&sp<el.offsetTop+el.offsetHeight){ document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active')); const lnk=document.querySelector(`.nav-links a[href="#${id}"]`); if(lnk) lnk.classList.add('active'); } }); }
 
 /* ── MOBILE MENU ── */
 document.getElementById('ham').addEventListener('click',()=>document.getElementById('mobMenu').classList.toggle('open'));
@@ -656,9 +941,14 @@ function mkNodes(){ nodes=[]; const n=Math.min(Math.floor(cv.width*cv.height/130
 function draw(){ cx.clearRect(0,0,cv.width,cv.height); const dark=document.documentElement.getAttribute('data-theme')==='dark'; const nc=dark?'rgba(96,165,250,.65)':'rgba(37,99,235,.45)'; const lp=dark?'rgba(96,165,250,':'rgba(37,99,235,'; const D=155; nodes.forEach(n=>{ n.x+=n.vx; n.y+=n.vy; if(n.x<0||n.x>cv.width) n.vx*=-1; if(n.y<0||n.y>cv.height) n.vy*=-1; }); for(let i=0;i<nodes.length;i++) for(let j=i+1;j<nodes.length;j++){ const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,d=Math.hypot(dx,dy); if(d<D){ cx.beginPath(); cx.strokeStyle=`${lp}${(1-d/D)*.22})`; cx.lineWidth=.7; cx.moveTo(nodes[i].x,nodes[i].y); cx.lineTo(nodes[j].x,nodes[j].y); cx.stroke(); } } nodes.forEach(n=>{ cx.beginPath(); cx.arc(n.x,n.y,n.r,0,Math.PI*2); cx.fillStyle=nc; cx.fill(); }); requestAnimationFrame(draw); }
 window.addEventListener('resize',resize); resize(); draw();
 
-/* ── TESTIMONIALS ── */
+/* ── TESTIMONIALS with swipe & hover-pause ── */
 let tIdx=0;
+let autoTimer=null;
+let isDragging=false;
+let dragStartX=0;
+let dragCurrentX=0;
 const tTrack=document.getElementById('testTrack');
+const tOuter=document.getElementById('testOuter');
 const tDots=document.querySelectorAll('.tdot');
 const TOTAL=tTrack.children.length;
 
@@ -667,22 +957,18 @@ function getVisible(){
   if(innerWidth<=1100) return 2;
   return 3;
 }
-
 function getCardWidth(){
-  // card width = (container width - gaps) / visible cards
   const v=getVisible();
   const gap=v===1?0:20;
   const container=tTrack.parentElement.offsetWidth;
   return (container - gap*(v-1)) / v;
 }
-
 function moveTabs(dir){
   const maxIdx=TOTAL-getVisible();
   tIdx=Math.max(0,Math.min(tIdx+dir,maxIdx));
   render();
 }
 function gotoTab(i){ tIdx=i; render(); }
-
 function render(){
   const v=getVisible();
   const maxIdx=Math.max(0,TOTAL-v);
@@ -690,36 +976,48 @@ function render(){
   const w=getCardWidth();
   const gap=v===1?0:20;
   tTrack.style.transform=`translateX(-${tIdx*(w+gap)}px)`;
-  // update dot sizes relative to visible range
-  tDots.forEach((d,i)=>{
-    d.classList.toggle('on', i===Math.min(tIdx,tDots.length-1));
-  });
+  tDots.forEach((d,i)=>{ d.classList.toggle('on', i===Math.min(tIdx,tDots.length-1)); });
 }
-
-// Set card widths dynamically so they always fit the container
 function sizeCards(){
   const w=getCardWidth();
   Array.from(tTrack.children).forEach(c=>{ c.style.flex=`0 0 ${w}px`; c.style.minWidth=`${w}px`; });
   render();
 }
+function startAuto(){
+  stopAuto();
+  autoTimer=setInterval(()=>{
+    const maxIdx=TOTAL-getVisible();
+    tIdx=(tIdx>=maxIdx)?0:tIdx+1;
+    render();
+  },5500);
+}
+function stopAuto(){ if(autoTimer){ clearInterval(autoTimer); autoTimer=null; } }
 
 window.addEventListener('resize',sizeCards);
-// Run after fonts/layout settle
 requestAnimationFrame(()=>requestAnimationFrame(sizeCards));
+startAuto();
 
-// Auto-advance
-setInterval(()=>{
-  const maxIdx=TOTAL-getVisible();
-  tIdx=(tIdx>=maxIdx)?0:tIdx+1;
-  render();
-},5500);
+/* Pause on hover */
+tOuter.addEventListener('mouseenter', stopAuto);
+tOuter.addEventListener('mouseleave', startAuto);
+
+/* Touch/drag swipe */
+function onDragStart(clientX){ isDragging=true; dragStartX=clientX; dragCurrentX=clientX; tTrack.style.transition='none'; stopAuto(); }
+function onDragMove(clientX){ if(!isDragging) return; dragCurrentX=clientX; const v=getVisible(); const gap=v===1?0:20; const w=getCardWidth(); const base=tIdx*(w+gap); const delta=dragCurrentX-dragStartX; tTrack.style.transform=`translateX(${-base+delta}px)`; }
+function onDragEnd(){ if(!isDragging) return; isDragging=false; tTrack.style.transition=''; const delta=dragCurrentX-dragStartX; const threshold=getCardWidth()*0.25; if(delta < -threshold) moveTabs(1); else if(delta > threshold) moveTabs(-1); else render(); startAuto(); }
+
+tOuter.addEventListener('touchstart',e=>onDragStart(e.touches[0].clientX),{passive:true});
+tOuter.addEventListener('touchmove',e=>onDragMove(e.touches[0].clientX),{passive:true});
+tOuter.addEventListener('touchend',onDragEnd);
+tOuter.addEventListener('mousedown',e=>onDragStart(e.clientX));
+window.addEventListener('mousemove',e=>{ if(isDragging) onDragMove(e.clientX); });
+window.addEventListener('mouseup',onDragEnd);
 
 /* ── COPY EMAIL ── */
 function copyEmail(){ navigator.clipboard.writeText('asorchris2019@gmail.com').then(()=>{ const b=document.getElementById('copyBtn'); b.textContent='Copied ✓'; b.style.color='var(--accent)'; b.style.borderColor='var(--accent)'; setTimeout(()=>{ b.textContent='Copy'; b.style.color=''; b.style.borderColor=''; },2200); }); }
 
 /* ── CONTACT FORM via Formspree ── */
 const FORMSPREE_ID='xyklelbp';
-
 async function sendMsg(){
   const n=document.getElementById('fName').value.trim();
   const e=document.getElementById('fEmail').value.trim();
