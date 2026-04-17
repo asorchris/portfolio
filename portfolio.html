@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christopher Asor — Product Marketing & Growth Strategist</title>
+<script>
+  (function(){
+    const s = localStorage.getItem('theme');
+    const d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.setAttribute('data-theme', s || (d ? 'dark' : 'light'));
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700;800&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+[data-theme="dark"] {
+  --bg:        #040C1A;
+  --bg2:       #071120;
+  --surface:   #0A1628;
+  --card:      rgba(10, 22, 40, 0.88);
+  --border:    rgba(255,255,255,0.07);
+  --border-h:  rgba(96,165,250,0.35);
+  --text:      #CBD8EE;
+  --text-m:    #5A7499;
+  --text-f:    #273B55;
+  --accent:    #60A5FA;
+  --glow:      rgba(96,165,250,0.09);
+  --sh-sm:     0 2px 8px rgba(0,0,0,0.4);
+  --sh:        0 8px 32px rgba(0,0,0,0.6);
+  --sh-lg:     0 24px 64px rgba(0,0,0,0.7);
+  --nav-bg:    rgba(4,12,26,0.85);
+  --ticker-bg: #060F1C;
+  --grad:      linear-gradient(135deg, #3B82F6, #93C5FD);
+  --grad-t:    linear-gradient(135deg, #3B82F6 0%, #93C5FD 100%);
+}
+
+[data-theme="light"] {
+  --bg:        #EFF4FF;
+  --bg2:       #E4EEFF;
+  --surface:   #FFFFFF;
+  --card:      rgba(255,255,255,0.92);
+  --border:    rgba(0,0,0,0.08);
+  --border-h:  rgba(37,99,235,0.35);
+  --text:      #0D1E38;
+  --text-m:    #3D5A80;
+  --text-f:    #A0B4CC;
+  --accent:    #2563EB;
+  --glow:      rgba(37,99,235,0.08);
+  --sh-sm:     0 2px 8px rgba(0,0,0,0.07);
+  --sh:        0 8px 32px rgba(0,0,0,0.1);
+  --sh-lg:     0 24px 64px rgba(0,0,0,0.14);
+  --nav-bg:    rgba(239,244,255,0.9);
+  --ticker-bg: #DDE8FF;
+  --grad:      linear-gradient(135deg, #2563EB, #60A5FA);
+  --grad-t:    linear-gradient(135deg, #2563EB 0%, #60A5FA 100%);
+}
+
+body { font-family: 'Sora', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; transition: background .3s, color .3s; }
+h1,h2,h3,h4 { font-family: 'Oxanium', sans-serif; font-weight: 700; }
+a { color: inherit; text-decoration: none; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 100px 0; }
+
+.sec-label { display: flex; align-items: center; gap: 10px; font-family: 'Oxanium', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+.sec-label::before { content:''; width:24px; height:2px; background:var(--accent); }
+.sec-title { font-size: clamp(26px,5vw,44px); font-weight: 800; line-height: 1.08; margin-bottom: 14px; }
+.sec-sub { font-size: 15px; color: var(--text-m); max-width: 540px; line-height: 1.75; }
+.grad-text { background: var(--grad-t); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.tag { display: inline-flex; align-items: center; padding: 4px 11px; border-radius: 20px; font-size: 11px; font-weight: 600; font-family: 'Oxanium', sans-serif; letter-spacing: .04em; border: 1px solid rgba(96,165,250,0.2); background: var(--glow); color: var(--accent); }
+
+.reveal { opacity:0; transform:translateY(24px); transition:opacity .65s ease, transform .65s ease; }
+.reveal.on { opacity:1; transform:none; }
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* NAV */
+nav { position: fixed; top:0; left:0; right:0; z-index:1000; padding: 18px 0; transition: all .3s; }
+nav.stuck { background: var(--nav-bg); backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px); border-bottom: 1px solid var(--border); padding: 12px 0; box-shadow: var(--sh-sm); }
+.nav-in { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.nav-logo { display: flex; align-items: center; gap: 10px; font-family: 'Oxanium', sans-serif; font-weight: 800; font-size: 18px; }
+.logo-mark { width: 34px; height: 34px; border-radius: 8px; background: var(--grad); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #fff; }
+.nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
+.nav-links a { font-size: 13.5px; font-weight: 500; padding: 7px 14px; border-radius: 7px; color: var(--text-m); transition: all .2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--glow); }
+.nav-act { display: flex; align-items: center; gap: 10px; }
+.theme-btn { width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: all .2s; }
+.theme-btn:hover { border-color: var(--accent); }
+.nav-hire { padding: 8px 20px; border-radius: 9px; background: var(--grad); color: #fff; font-family: 'Oxanium', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; transition: all .2s; white-space: nowrap; }
+.nav-hire:hover { opacity: .88; transform: translateY(-1px); }
+.ham { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.ham span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all .3s; }
+.mob-menu { display: none; position: fixed; top: 63px; left: 0; right: 0; background: var(--nav-bg); backdrop-filter: blur(22px); border-bottom: 1px solid var(--border); padding: 12px 24px; z-index: 999; }
+.mob-menu.open { display: block; }
+.mob-menu ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+.mob-menu a { display: block; padding: 10px 14px; border-radius: 8px; font-size: 14px; color: var(--text-m); transition: all .2s; }
+.mob-menu a:hover { color: var(--text); background: var(--glow); }
+
+/* HERO */
+#hero { position: relative; min-height: 100vh; display: flex;  overflow: hidden; padding: 0; margin: 0;}
+#hCanvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.h-grid { position: absolute; inset: 0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 60px 60px; opacity: .4; pointer-events: none; }
+.h-glow-orb { position: absolute; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,.06) 0%, transparent 65%); top: -200px; left: -180px; pointer-events: none; }
+.h-content { position: relative; z-index: 2; max-width: 1600px; margin: 0 auto; padding: 120px 0px 80px; display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center; }
+.h-left { max-width: 1200px; }
+.avail-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(96,165,250,.22); background: rgba(96,165,250,.06); font-size: 11.5px; font-weight: 600; font-family: 'Oxanium', sans-serif; letter-spacing: .07em; color: var(--accent); margin-bottom: 24px; }
+.avail-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{ box-shadow: 0 0 0 0 rgba(96,165,250,.5); } 50%{ box-shadow: 0 0 0 7px rgba(96,165,250,0); } }
+.h-name { font-size: clamp(44px,9vw,86px); font-weight: 800; line-height: .96; letter-spacing: -.025em; margin-bottom: 12px; }
+.h-title { font-family: 'Oxanium', sans-serif; font-size: clamp(13px,2.2vw,18px); font-weight: 400; color: var(--text-m); margin-bottom: 24px; }
+.h-desc { font-size: 15px; color: var(--text-m); max-width: 500px; line-height: 1.8; margin-bottom: 38px; }
+.h-btns { display: flex; gap: 13px; flex-wrap: wrap; margin-bottom: 44px; }
+.btn-p { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; border-radius: 10px; background: var(--grad); color: #fff; font-family: 'Oxanium', sans-serif; font-size: 12.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; transition: all .2s; cursor: pointer; border: none; }
+.btn-p:hover { opacity: .88; transform: translateY(-2px); box-shadow: 0 8px 28px var(--glow); }
+.btn-s { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 10px; border: 1px solid var(--border); color: var(--text); font-family: 'Oxanium', sans-serif; font-size: 12.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; background: transparent; transition: all .2s; cursor: pointer; }
+.btn-s:hover { border-color: var(--accent); color: var(--accent); background: var(--glow); }
+.h-socials { display: flex; gap: 22px; flex-wrap: wrap; }
+.soc-lnk { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--text-m); transition: color .2s; }
+.soc-lnk:hover { color: var(--accent); }
+.soc-lnk svg { width: 15px; height: 15px; }
+.h-stats { display: flex; margin-right: 0; flex-direction: column; gap: 24px; background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 30px 26px; backdrop-filter: blur(12px); box-shadow: var(--sh); min-width: 400px; }
+.stat-num { font-family: 'Oxanium', sans-serif; font-size: 34px; font-weight: 800; line-height: 1; background: var(--grad-t); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-lbl { font-size: 11.5px; color: var(--text-m); margin-top: 4px; }
+.stat-sep { width: 100%; height: 1px; background: var(--border); }
+.h-scroll { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--text-m); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
+.scroll-bar { width: 1px; height: 38px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollbar 2s ease-in-out infinite; transform-origin: top; border-radius: 1px; }
+@keyframes scrollbar { 0%{transform:scaleY(0);opacity:0} 40%{transform:scaleY(1);opacity:1} 80%{transform-origin:bottom;transform:scaleY(0);opacity:0} 100%{opacity:0} }
+
+/* TICKER */
+.ticker-wrap { overflow: hidden; background: var(--ticker-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 13px 0; }
+.ticker-track { display: flex; animation: tick 30s linear infinite; white-space: nowrap; }
+.ticker-track:hover { animation-play-state: paused; }
+.t-item { display: inline-flex; align-items: center; gap: 16px; padding: 0 26px; font-family: 'Oxanium', sans-serif; font-size: 11.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--text-m); }
+.t-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+@keyframes tick { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.about-bio { font-size: 15px; line-height: 1.85; color: var(--text-m); margin-bottom: 18px; }
+.about-bio strong { color: var(--text); font-weight: 600; }
+.hi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 28px; }
+.hi-card { padding: 18px 20px; border-radius: 12px; border: 1px solid var(--border); background: var(--card); backdrop-filter: blur(10px); transition: all .3s; }
+.hi-card:hover { border-color: var(--border-h); transform: translateY(-2px); }
+.hi-ttl { font-family: 'Oxanium', sans-serif; font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+.hi-desc { font-size: 11.5px; color: var(--text-m); }
+.profile-card { border-radius: 18px; border: 1px solid var(--border); background: var(--card); backdrop-filter: blur(12px); overflow: hidden; box-shadow: var(--sh); }
+.pf-photo { height: 260px; background: linear-gradient(160deg, rgba(59,130,246,.12) 0%, rgba(96,165,250,.04) 100%); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border); position: relative; }
+.pf-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover; /* This is crucial: it prevents the image from stretching */
+  border: 3px solid var(--accent); /* Optional: adds a nice branded ring around your face */
+  box-shadow: 0 0 48px rgba(59,130,246,0.3);
+  z-index: 2;
+}.pf-init { width: 100px; height: 100px; border-radius: 50%; background: var(--grad); display: flex; align-items: center; justify-content: center; font-family: 'Oxanium', sans-serif; font-size: 34px; font-weight: 800; color: #fff; box-shadow: 0 0 48px rgba(59,130,246,.3); }
+.pf-hint { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); font-size: 10.5px; color: var(--text-m); white-space: nowrap; background: var(--card); padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border); }
+.pf-body { padding: 24px; }
+.pf-name { font-family: 'Oxanium', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 2px; }
+.pf-role { font-size: 12px; color: var(--text-m); margin-bottom: 18px; }
+.pf-facts { display: flex; flex-direction: column; gap: 10px; }
+.pf-fact { font-size: 13px; color: var(--text-m); }
+.pf-fact span { color: var(--text); font-weight: 500; }
+
+/* SKILLS */
+#skills { background: var(--bg2); }
+.skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 48px; }
+.sk-card { padding: 24px 22px; border-radius: 14px; border: 1px solid var(--border); background: var(--card); backdrop-filter: blur(10px); transition: all .3s; }
+.sk-card:hover { border-color: var(--border-h); transform: translateY(-4px); box-shadow: var(--sh); }
+.sk-ttl { font-family: 'Oxanium', sans-serif; font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.sk-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.sk-tag { padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; border: 1px solid var(--border); color: var(--text-m); background: transparent; transition: all .2s; }
+.sk-tag:hover { border-color: var(--accent); color: var(--accent); background: var(--glow); }
+
+/* TIMELINE */
+.timeline { position: relative; margin-top: 56px; }
+.timeline::before { content: ''; position: absolute; left: 22px; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--accent), rgba(96,165,250,.1)); }
+.tl-item { position: relative; padding-left: 68px; margin-bottom: 40px; }
+.tl-item:last-child { margin-bottom: 0; }
+.tl-dot { position: absolute; left: 11px; top: 5px; width: 22px; height: 22px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; transition: box-shadow .3s; }
+.tl-dot::after { content:''; width:7px; height:7px; border-radius:50%; background:var(--accent); }
+.tl-item:hover .tl-dot { box-shadow: 0 0 14px var(--accent); }
+.tl-card { padding: 24px 28px; border-radius: 14px; border: 1px solid var(--border); background: var(--card); backdrop-filter: blur(10px); transition: all .3s; }
+.tl-card:hover { border-color: var(--border-h); box-shadow: var(--sh); }
+.tl-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+.tl-co { font-family: 'Oxanium', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 3px; }
+.tl-role { font-size: 13px; color: var(--accent); font-weight: 500; }
+.tl-period { font-family: 'Oxanium', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .05em; color: var(--text-m); padding: 4px 11px; border-radius: 20px; border: 1px solid var(--border); white-space: nowrap; flex-shrink: 0; }
+.tl-list { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-top: 6px; }
+.tl-list li { font-size: 13px; color: var(--text-m); padding-left: 14px; position: relative; line-height: 1.65; }
+.tl-list li::before { content:'›'; position:absolute; left:0; color:var(--accent); font-weight:700; }
+.tl-foot { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+
+/* PROJECTS */
+#projects { background: var(--bg2); }
+.proj-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 44px; flex-wrap: wrap; }
+.proj-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.proj-card { border-radius: 18px; border: 1px solid var(--border); background: var(--card); backdrop-filter: blur(10px); overflow: hidden; transition: all .3s; display: flex; flex-direction: column; }
+.proj-card:hover { border-color: var(--border-h); transform: translateY(-6px); box-shadow: var(--sh-lg); }
+.proj-top { height: 120px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border); background: linear-gradient(135deg, rgba(59,130,246,.1) 0%, rgba(96,165,250,.04) 100%); }
+.proj-logo { font-family: 'Oxanium', sans-serif; font-size: 24px; font-weight: 800; letter-spacing: -.02em; color: var(--accent); }
+.proj-body { padding: 20px 22px 22px; flex: 1; display: flex; flex-direction: column; }
+.proj-co { font-family: 'Oxanium', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+.proj-role { font-size: 10.5px; color: var(--accent); font-weight: 600; font-family: 'Oxanium', sans-serif; letter-spacing: .04em; margin-bottom: 10px; text-transform: uppercase; }
+.proj-desc { font-size: 13px; color: var(--text-m); line-height: 1.72; margin-bottom: 14px; flex: 1; }
+.proj-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.proj-lnk { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 11.5px; font-family: 'Oxanium', sans-serif; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); transition: gap .2s; }
+.proj-lnk:hover { gap: 10px; }
+.proj-lnk svg { width: 11px; height: 11px; }
+
+/* TESTIMONIALS */
+.test-wrap { overflow: hidden; margin-top: 48px; }
+/* Update these specific classes */
+.test-track { 
+  display: flex; 
+  gap: 24px; /* Space between cards */
+  transition: transform .55s cubic-bezier(.25,.8,.25,1);
+  width: 100%; /* Ensure it fills the container */
+}
+
+.test-card { 
+  /* On Desktop: Take up 1/3 of the row minus the gaps */
+  flex: 0 0 calc(33.333% - 16px); 
+  padding: 32px 28px; 
+  border-radius: 18px; 
+  border: 1px solid var(--border); 
+  background: var(--card); 
+  backdrop-filter: blur(10px); 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Keeps the bottom aligned */
+  transition: all .3s; 
+}
+.test-stars { color: var(--accent); font-size: 12px; letter-spacing: 2px; margin-bottom: 10px; opacity: .7; }
+.test-quote { font-size: 30px; color: var(--accent); font-family: 'Oxanium', sans-serif; font-weight: 800; line-height: 1; margin-bottom: 10px; opacity: .45; }
+.test-txt { font-size: 13px; color: var(--text-m); line-height: 1.82; margin-bottom: 20px; font-style: italic; }
+.test-auth { display: flex; align-items: center; gap: 12px; }
+.auth-av { width: 40px; height: 40px; border-radius: 50%; background: var(--grad); display: flex; align-items: center; justify-content: center; font-family: 'Oxanium', sans-serif; font-size: 12px; font-weight: 700; color: #fff; flex-shrink: 0; }
+.auth-name { font-family: 'Oxanium', sans-serif; font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+.auth-role { font-size: 11px; color: var(--text-m); }
+.test-nav { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 32px; }
+.tb { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border); background: var(--card); color: var(--text-m); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; font-size: 14px; }
+.tb:hover { border-color: var(--accent); color: var(--accent); background: var(--glow); }
+.tdots { display: flex; gap: 7px; }
+.tdot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); cursor: pointer; transition: all .3s; }
+.tdot.on { background: var(--accent); width: 20px; border-radius: 4px; }
+
+/* CONTACT */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-top: 52px; }
+.ci-blk { margin-bottom: 26px; }
+.ci-lbl { font-size: 10.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--text-m); margin-bottom: 6px; }
+.ci-val { font-family: 'Oxanium', sans-serif; font-size: 14.5px; font-weight: 600; color: var(--text); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.copy-b { padding: 3px 9px; border-radius: 5px; font-size: 11px; border: 1px solid var(--border); background: transparent; color: var(--text-m); cursor: pointer; transition: all .2s; }
+.copy-b:hover { border-color: var(--accent); color: var(--accent); }
+.c-socials { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 26px; }
+.csoc { display: flex; align-items: center; gap: 7px; padding: 9px 16px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); color: var(--text-m); font-size: 13px; font-weight: 500; transition: all .2s; }
+.csoc:hover { border-color: var(--accent); color: var(--accent); background: var(--glow); }
+.csoc svg { width: 14px; height: 14px; }
+.c-form { display: flex; flex-direction: column; gap: 14px; }
+.fg { display: flex; flex-direction: column; gap: 5px; }
+.fl { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-m); }
+.fi, .fta { padding: 11px 14px; border-radius: 9px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-family: 'Sora', sans-serif; font-size: 13.5px; outline: none; transition: all .2s; }
+.fi:focus, .fta:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--glow); }
+.fta { resize: vertical; min-height: 120px; }
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-msg { padding: 12px 16px; border-radius: 9px; font-size: 13px; font-weight: 500; display: none; border: 1px solid; }
+.form-msg.ok { display:block; background:rgba(96,165,250,.08); border-color:rgba(96,165,250,.25); color:var(--accent); }
+.form-msg.err { display:block; background:rgba(239,68,68,.07); border-color:rgba(239,68,68,.2); color:#F87171; }
+
+/* FOOTER */
+footer { background: var(--surface); border-top: 1px solid var(--border); padding: 40px 0 26px; }
+.ft-in { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+.ft-links { display: flex; gap: 20px; list-style: none; }
+.ft-links a { font-size: 13px; color: var(--text-m); transition: color .2s; }
+.ft-links a:hover { color: var(--accent); }
+.ft-btm { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.ft-copy { font-size: 12px; color: var(--text-m); }
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .h-content { grid-template-columns: 1fr; }
+  .h-stats { flex-direction: row; padding: 20px 22px; min-width: 0; width: 100%; }
+  .stat-sep { display: none; }
+  .h-stats > div:not(.stat-sep) { flex: 1; }
+  .proj-grid { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width:768px){
+  .nav-links, .nav-hire { display: none; }
+  .ham { display: flex; }
+  .section { padding: 64px 0; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .h-scroll { display: none; }
+  .test-card { min-width: calc(50% - 10px); }
+}
+@media(max-width:560px){
+  .skills-grid { grid-template-columns: 1fr; }
+  .proj-grid { grid-template-columns: 1fr; }
+  .hi-grid { grid-template-columns: 1fr; }
+  .test-card { min-width: 100%; }
+  .frow { grid-template-columns: 1fr; }
+  .h-stats { flex-wrap: wrap; }
+}
+/* Tablet (2 per row) */
+@media(max-width:1024px){
+  .test-card { 
+    flex: 0 0 calc(50% - 12px); 
+  }
+}
+
+/* Mobile (1 per row) */
+@media(max-width:768px){
+  .test-card { 
+    flex: 0 0 100%; 
+  }
+  .test-track {
+    gap: 0; /* Clear gap for cleaner mobile sliding */
+  }
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-in">
+    <a href="#hero" class="nav-logo">
+      <div class="logo-mark">CA</div>
+      <span class="grad-text">Christopher.</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#hero" class="active">Home</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-act">
+      <button class="theme-btn" id="themeBtn" title="Toggle theme">☀️</button>
+      <a href="#contact" class="nav-hire">Hire Me</a>
+    </div>
+    <div class="ham" id="ham"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <ul>
+    <li><a href="#hero" onclick="closeMob()">Home</a></li>
+    <li><a href="#about" onclick="closeMob()">About Me</a></li>
+    <li><a href="#work" onclick="closeMob()">Work</a></li>
+    <li><a href="#projects" onclick="closeMob()">Projects</a></li>
+    <li><a href="#testimonials" onclick="closeMob()">Testimonials</a></li>
+    <li><a href="#contact" onclick="closeMob()">Contact</a></li>
+  </ul>
+</div>
+
+<section id="hero">
+  <canvas id="hCanvas"></canvas>
+  <div class="h-grid"></div>
+  <div class="h-glow-orb"></div>
+  <div class="h-content container">
+    <div class="h-left">
+      <div class="avail-badge reveal"><span class="avail-dot"></span>Available for new projects</div>
+      <h1 class="h-name reveal d1"><span class="grad-text">Christopher</span><br>Asor.</h1>
+      <p class="h-title reveal d2">Product Marketing &amp; Growth Strategist</p>
+      <p class="h-desc reveal d3">I turn complex products into clear, compelling narratives that drive real adoption. From DeFi protocols to crypto payment platforms and beyond. I bridge the gap between technical innovation and the people it's built for.</p>
+      <div class="h-btns reveal d4">
+        <a href="#projects" class="btn-p">View My Work <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#contact" class="btn-s">Get in Touch</a>
+      </div>
+      <div class="h-socials reveal">
+        <a href="https://x.com/Xtopher0x" target="_blank" class="soc-lnk"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Xtopher0x</a>
+        <a href="https://github.com/asorchris" target="_blank" class="soc-lnk"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>GitHub</a>
+        <a href="mailto:asorchris2019@gmail.com" class="soc-lnk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Email</a>
+      </div>
+    </div>
+    <div class="h-stats reveal d2">
+      <div><div class="stat-num">2+</div><div class="stat-lbl">Years in Marketing</div></div>
+      <div class="stat-sep"></div>
+      <div><div class="stat-num">6+</div><div class="stat-lbl">Brands Worked With</div></div>
+      <div class="stat-sep"></div>
+      <div><div class="stat-num">1st</div><div class="stat-lbl">Class Hons · CS</div></div>
+    </div>
+  </div>
+  <div class="h-scroll"><div class="scroll-bar"></div><span>Scroll</span></div>
+</section>
+
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <div class="t-item"><span class="t-dot"></span>Product Marketing</div><div class="t-item"><span class="t-dot"></span>Content Strategy</div><div class="t-item"><span class="t-dot"></span>Web3 &amp; DeFi</div><div class="t-item"><span class="t-dot"></span>GTM Strategy</div><div class="t-item"><span class="t-dot"></span>Crypto Payments</div><div class="t-item"><span class="t-dot"></span>User Onboarding</div><div class="t-item"><span class="t-dot"></span>SEO &amp; Growth</div><div class="t-item"><span class="t-dot"></span>Scriptwriting</div><div class="t-item"><span class="t-dot"></span>Brand Strategy</div><div class="t-item"><span class="t-dot"></span>Product Positioning</div>
+    <div class="t-item"><span class="t-dot"></span>Product Marketing</div><div class="t-item"><span class="t-dot"></span>Content Strategy</div><div class="t-item"><span class="t-dot"></span>Web3 &amp; DeFi</div><div class="t-item"><span class="t-dot"></span>GTM Strategy</div><div class="t-item"><span class="t-dot"></span>Crypto Payments</div><div class="t-item"><span class="t-dot"></span>User Onboarding</div><div class="t-item"><span class="t-dot"></span>SEO &amp; Growth</div><div class="t-item"><span class="t-dot"></span>Scriptwriting</div><div class="t-item"><span class="t-dot"></span>Brand Strategy</div><div class="t-item"><span class="t-dot"></span>Product Positioning</div>
+  </div>
+</div>
+
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="sec-label reveal">About Me</div>
+        <h2 class="sec-title reveal d1">Where <span class="grad-text">technical depth</span><br>meets compelling story</h2>
+        <p class="about-bio reveal d2">I'm <strong>Christopher Asor</strong>, a product-focused marketer based in <strong>Lagos, Nigeria</strong> with a <strong>First Class B.Tech in Computer Science</strong> from FUTO. My technical foundation gives me a rare edge. I understand what's being built, and I know how to make people care about it.</p>
+        <p class="about-bio reveal d3">I've led product, marketing and growth for <strong>crypto payment platforms</strong>, <strong>AI-powered wallets</strong>, and <strong> tech startups</strong> turning complex products into clear stories that build trust and drive adoption. I live at the intersection of <strong>product thinking and marketing execution</strong>.</p>
+        <div class="hi-grid reveal d4">
+          <div class="hi-card"><div class="hi-ttl">First Class Honours</div><div class="hi-desc">B.Tech Computer Science, FUTO 2019–2024</div></div>
+          <div class="hi-card"><div class="hi-ttl">Web3 Native</div><div class="hi-desc">Deep roots in DeFi, wallets &amp; crypto payments</div></div>
+          <div class="hi-card"><div class="hi-ttl">Lagos, Nigeria</div><div class="hi-desc">Open to remote &amp; global opportunities</div></div>
+          <div class="hi-card"><div class="hi-ttl">Startup DNA</div><div class="hi-desc">Founding-team experience across multiple startups</div></div>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <div class="profile-card">
+         <div class="pf-photo">
+  <img src="/img.jpeg" alt="Christopher Asor" class="pf-img">
+  <span class="pf-hint">Christopher Asor</span>
+</div>
+          <div class="pf-body">
+            <div class="pf-name">Christopher Asor</div>
+            <div class="pf-role">Product Marketing &amp; Growth Strategist</div>
+            <div class="pf-facts">
+              <div class="pf-fact">Location — <span>Lagos, Nigeria</span></div>
+              <div class="pf-fact">X — <span>@Xtopher0x</span></div>
+              <div class="pf-fact">Email — <span>asorchris2019@gmail.com</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="section">
+  <div class="container">
+    <div class="sec-label reveal">My Expertise</div>
+    <h2 class="sec-title reveal d1">Skills &amp; <span class="grad-text">Capabilities</span></h2>
+    <p class="sec-sub reveal d2">Full-stack marketer with technical depth — across strategy, content, design, and product.</p>
+    <div class="skills-grid">
+      <div class="sk-card reveal"><div class="sk-ttl">Product &amp; Growth</div><div class="sk-tags"><span class="sk-tag">Product Positioning</span><span class="sk-tag">GTM Strategy</span><span class="sk-tag">User Onboarding</span><span class="sk-tag">Content-Led Growth</span><span class="sk-tag">SEO Strategy</span><span class="sk-tag">Conversion Optimization</span></div></div>
+      <div class="sk-card reveal d1"><div class="sk-ttl">Content &amp; Communication</div><div class="sk-tags"><span class="sk-tag">Technical Writing</span><span class="sk-tag">Scriptwriting</span><span class="sk-tag">Short-form Video</span><span class="sk-tag">Educational Content</span><span class="sk-tag">Storytelling</span><span class="sk-tag">Brand Voice</span></div></div>
+      <div class="sk-card reveal d2"><div class="sk-ttl">Web3 &amp; Crypto</div><div class="sk-tags"><span class="sk-tag">DeFi</span><span class="sk-tag">Crypto Payments</span><span class="sk-tag">Non-Custodial Wallets</span><span class="sk-tag">Interoperability</span><span class="sk-tag">Token Economics</span><span class="sk-tag">Community Growth</span></div></div>
+      <div class="sk-card reveal"><div class="sk-ttl">Design &amp; Visual</div><div class="sk-tags"><span class="sk-tag">Figma</span><span class="sk-tag">UX/UI Design</span><span class="sk-tag">Photoshop</span><span class="sk-tag">CorelDraw</span><span class="sk-tag">CapCut</span><span class="sk-tag">DaVinci Resolve</span></div></div>
+      <div class="sk-card reveal d1"><div class="sk-ttl">Technical</div><div class="sk-tags"><span class="sk-tag">HTML / CSS</span><span class="sk-tag">JavaScript</span><span class="sk-tag">WordPress</span><span class="sk-tag">API Integration</span><span class="sk-tag">Git / GitHub</span></div></div>
+      <div class="sk-card reveal d2"><div class="sk-ttl">Platforms &amp; Channels</div><div class="sk-tags"><span class="sk-tag">X (Twitter)</span><span class="sk-tag">TikTok</span><span class="sk-tag">Instagram</span><span class="sk-tag">LinkedIn</span><span class="sk-tag">Discord</span><span class="sk-tag">Telegram</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="section">
+  <div class="container">
+    <div class="sec-label reveal">My Journey</div>
+    <h2 class="sec-title reveal d1">Work <span class="grad-text">Experience</span></h2>
+    <p class="sec-sub reveal d2">A consistent track record driving growth and storytelling for innovative products.</p>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-head"><div><div class="tl-co">Spendex <span style="font-size:11px;color:var(--text-m);font-weight:400">· spendex.co</span></div><div class="tl-role">CMO / Content Lead &amp; Growth Strategist</div></div><div class="tl-period">2025 – Present</div></div>
+          <ul class="tl-list"><li>Owned all content across social channels and led GTM strategy for a live crypto payments product.</li><li>Designed an SEO-driven website targeting high-intent search traffic for crypto payment adoption.</li><li>Created product messaging and video scripts highlighting utility for users and SMBs.</li><li>Tracked performance across all channels and iterated messaging to improve conversion and onboarding.</li></ul>
+          <div class="tl-foot"><span class="tag">Crypto Payments</span><span class="tag">GTM</span><span class="tag">SEO</span><span class="tag">Content Strategy</span></div>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-head"><div><div class="tl-co">Fitxn Inc. <span style="font-size:11px;color:var(--text-m);font-weight:400">· fitxn.co</span></div><div class="tl-role">Founding Product Designer &amp; Marketing Lead</div></div><div class="tl-period">2024 · 6-month Contract</div></div>
+          <ul class="tl-list"><li>Joined as a founding team member, shaping product design and marketing from the ground up.</li><li>Led UX/UI design decisions and translated product vision into user-friendly interfaces.</li><li>Developed GTM positioning and early-stage content strategy to drive initial user acquisition.</li></ul>
+          <div class="tl-foot"><span class="tag">Health Tech</span><span class="tag">Founding Team</span><span class="tag">UX/UI Design</span><span class="tag">GTM</span></div>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-head"><div><div class="tl-co">Senti Finance <span style="font-size:11px;color:var(--text-m);font-weight:400">· @SentiWallet</span></div><div class="tl-role">Content Lead &amp; GTM Strategist</div></div><div class="tl-period">2024</div></div>
+          <ul class="tl-list"><li>Led early-stage user education and content strategy for an AI-powered Solana non-custodial wallet.</li><li>Created content explaining product utility to both crypto-native and non-technical audiences.</li><li>Oversaw GTM strategy to build early awareness and trust in a competitive wallet market.</li></ul>
+          <div class="tl-foot"><span class="tag">Solana</span><span class="tag">AI Wallet</span><span class="tag">User Education</span><span class="tag">Web3</span></div>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-head"><div><div class="tl-co">Independent — Web3 &amp; Crypto</div><div class="tl-role">Content &amp; Growth Strategist · Freelance</div></div><div class="tl-period">2023 – Present</div></div>
+          <ul class="tl-list"><li>Created structured content simplifying complex Web3 products for non-technical users.</li><li>Developed strategies focused on trust-building and adoption across DeFi, interoperability, and payments.</li><li>Partnered with Axelar, Triad, and Sophon as brand ambassador, creating educational onboarding content.</li></ul>
+          <div class="tl-foot"><span class="tag">DeFi</span><span class="tag">Brand Ambassador</span><span class="tag">Web3 Education</span><span class="tag">Freelance</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="section">
+  <div class="container">
+    <div class="proj-head">
+      <div><div class="sec-label reveal">Featured Work</div><h2 class="sec-title reveal d1">Projects &amp; <span class="grad-text">Brands</span></h2></div>
+      <p class="sec-sub reveal d2" style="margin-bottom:0">Companies I've helped position, grow, and market.</p>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card reveal"><div class="proj-top"><span class="proj-logo">Spendex</span></div><div class="proj-body"><div class="proj-co">Spendex</div><div class="proj-role">CMO / Content Lead &amp; Growth Strategist</div><p class="proj-desc">Crypto payments platform for users &amp; SMBs. Led full content strategy, video ad production, SEO website, and GTM execution for a live product.</p><div class="proj-tags"><span class="tag">Crypto Payments</span><span class="tag">SMB</span><span class="tag">GTM</span></div><a href="https://spendex.co" target="_blank" class="proj-lnk">Visit Spendex <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a></div></div>
+      <div class="proj-card reveal d1"><div class="proj-top"><span class="proj-logo">Senti</span></div><div class="proj-body"><div class="proj-co">Senti Finance</div><div class="proj-role">Content Lead &amp; GTM Strategist</div><p class="proj-desc">AI-powered Solana non-custodial wallet. Built early-stage awareness through clear, accessible content for crypto-native and mainstream users.</p><div class="proj-tags"><span class="tag">Solana</span><span class="tag">AI Wallet</span><span class="tag">Web3</span></div><a href="https://senti.finance" target="_blank" class="proj-lnk">Visit Senti Finance <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a></div></div>
+      <div class="proj-card reveal d2"><div class="proj-top"><span class="proj-logo">Fitxn</span></div><div class="proj-body"><div class="proj-co">Fitxn Inc.</div><div class="proj-role">Founding Product Designer &amp; Marketing Lead</div><p class="proj-desc">Health &amp; fitness tech startup. Joined as founding team member — led UX/UI design, product-market fit, and early-stage GTM strategy.</p><div class="proj-tags"><span class="tag">Health Tech</span><span class="tag">UX Design</span><span class="tag">Founding Team</span></div><a href="https://fitxn.co" target="_blank" class="proj-lnk">Visit Fitxn <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a></div></div>
+      <div class="proj-card reveal"><div class="proj-top"><span class="proj-logo">Axelar</span></div><div class="proj-body"><div class="proj-co">Axelar</div><div class="proj-role">Brand Ambassador &amp; Content Creator</div><p class="proj-desc">Cross-chain interoperability protocol. Produced on-brand educational content to simplify Axelar's technology and onboard new users.</p><div class="proj-tags"><span class="tag">Interoperability</span><span class="tag">Cross-chain</span><span class="tag">Education</span></div></div></div>
+      <div class="proj-card reveal d1"><div class="proj-top"><span class="proj-logo">Triad</span></div><div class="proj-body"><div class="proj-co">Triad</div><div class="proj-role">Brand Ambassador &amp; Content Creator</div><p class="proj-desc">Created on-brand educational and promotional content to build community awareness and drive adoption across the Triad ecosystem.</p><div class="proj-tags"><span class="tag">Web3</span><span class="tag">Brand Ambassador</span><span class="tag">Content</span></div></div></div>
+      <div class="proj-card reveal d2"><div class="proj-top"><span class="proj-logo">Sophon</span></div><div class="proj-body"><div class="proj-co">Sophon</div><div class="proj-role">Brand Ambassador &amp; Content Creator</div><p class="proj-desc">Developed targeted educational content to introduce Sophon's products to new audiences, building trust and driving onboarding through clear storytelling.</p><div class="proj-tags"><span class="tag">Web3</span><span class="tag">User Education</span><span class="tag">Growth</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="section" style="background:var(--bg2)">
+  <div class="container">
+    <div class="sec-label reveal">Social Proof</div>
+    <h2 class="sec-title reveal d1">What People <span class="grad-text">Say</span></h2>
+    <p class="sec-sub reveal d2">Words from teams and founders I've worked with. <span style="color:var(--text-f);font-size:12px">— Replace with real testimonials.</span></p>
+    <div class="test-wrap reveal">
+      <div class="test-track" id="testTrack">
+        <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-quote">"</div><p class="test-txt">Working with Chris at the founding stage was one of our best moves. As a founding designer and marketer, he didn't just give us a brand—he gave us a vision. His technical foundation in CS meant we never had to 'simplify' things for him; he just got it and made it better.</p><div class="test-auth"><div class="auth-av">FK</div><div><div class="auth-name">Franklin Simeon Emeka</div><div class="auth-role">Founder / CEO · Fitxn </div></div></div></div>
+        <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-quote">"</div><p class="test-txt">Christopher has a rare ability to understand a product deeply and translate it into messaging that actually resonates. At Spendex, he turned a complex crypto-utility platform into a story people could finally understand. He doesn't just market; he builds the bridge between the code and the consumer.</p><div class="test-auth"><div class="auth-av">OF</div><div><div class="auth-name"> Oparah Favour</div><div class="auth-role">Founder / CEO · Spendex</div></div></div></div>
+        <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-quote">"</div><p class="test-txt">In the fast-moving Solana ecosystem, trust is everything. Chris's strategy for our GTM and educational content was the key to building that trust. He has a 'Product-First' marketing mindset that is incredibly rare in Web3—he knows how to educate without losing the user's interest.</p><div class="test-auth"><div class="auth-av">TO</div><div><div class="auth-name">Tomi </div><div class="auth-role"> Founder · Senti Finance</div></div></div></div>
+      </div>
+    </div>
+    <div class="test-nav reveal">
+      <button class="tb" onclick="moveTabs(-1)">←</button>
+      <div class="tdots"><div class="tdot on" onclick="gotoTab(0)"></div><div class="tdot" onclick="gotoTab(1)"></div><div class="tdot" onclick="gotoTab(2)"></div></div>
+      <button class="tb" onclick="moveTabs(1)">→</button>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="container">
+    <div class="sec-label reveal">Get In Touch</div>
+    <h2 class="sec-title reveal d1">Let's <span class="grad-text">Work Together</span></h2>
+    <p class="sec-sub reveal d2">Open to full-time roles, contracts, advisory, and ambassador opportunities in Web3, fintech, and emerging tech.</p>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="ci-blk"><div class="ci-lbl">Email</div><div class="ci-val">asorchris2019@gmail.com <button class="copy-b" id="copyBtn" onclick="copyEmail()">Copy</button></div></div>
+        <div class="ci-blk"><div class="ci-lbl">Based In</div><div class="ci-val">Lagos, Nigeria · Open to Remote</div></div>
+        <div class="ci-blk"><div class="ci-lbl">Availability</div><div class="ci-val"><span class="avail-dot" style="display:inline-block;margin-right:6px"></span>Available for new projects</div></div>
+        <div class="c-socials">
+          <a href="https://x.com/Xtopher0x" target="_blank" class="csoc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Xtopher0x</a>
+          <a href="https://github.com/asorchris" target="_blank" class="csoc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>GitHub</a>
+          <a href="www.linkedin.com/in/christopher-asor" target="_blank" class="csoc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+        </div>
+      </div>
+
+      <!--
+        ════════════════════════════════════════
+        TO RECEIVE MESSAGES IN YOUR EMAIL INBOX:
+        ════════════════════════════════════════
+        1. Sign up free at https://formspree.io
+        2. Click "New Form" and name it anything
+        3. Copy your form endpoint — it looks like:
+              https://formspree.io/f/xyzabc12
+        4. Find the line below:  const FORMSPREE_ID = 'YOUR_FORMSPREE_ID'
+        5. Replace YOUR_FORMSPREE_ID with just the
+           ID portion, e.g.: 'xyzabc12'
+        That's it — messages land in your inbox instantly.
+        ════════════════════════════════════════
+      -->
+      <div class="c-form reveal d2">
+        <div class="frow">
+          <div class="fg"><label class="fl">Your Name</label><input type="text" class="fi" id="fName" placeholder="Jane Doe"></div>
+          <div class="fg"><label class="fl">Your Email</label><input type="email" class="fi" id="fEmail" placeholder="jane@company.com"></div>
+        </div>
+        <div class="fg"><label class="fl">Subject</label><input type="text" class="fi" id="fSubject" placeholder="Let's collaborate on something great"></div>
+        <div class="fg"><label class="fl">Message</label><textarea class="fta" id="fMsg" placeholder="Tell me about your project or opportunity..."></textarea></div>
+        <div class="form-msg" id="formMsg"></div>
+        <button class="btn-p" id="sendBtn" style="align-self:flex-start" onclick="sendMsg()">
+          Send Message
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2 11 13M22 2 15 22 11 13 2 9l20-7z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="ft-in">
+      <div class="nav-logo"><div class="logo-mark">CA</div><span class="grad-text" style="font-family:'Oxanium',sans-serif;font-size:16px;font-weight:800">Christopher Asor</span></div>
+      <ul class="ft-links"><li><a href="#hero">Home</a></li><li><a href="#about">About</a></li><li><a href="#work">Work</a></li><li><a href="#projects">Projects</a></li><li><a href="#testimonials">Testimonials</a></li><li><a href="#contact">Contact</a></li></ul>
+    </div>
+    <div class="ft-btm">
+      <p class="ft-copy">© 2026 Christopher Asor · All rights reserved · Built in Lagos.</p>
+      <p class="ft-copy">Product Marketing &amp; Growth Strategist · Web3 &amp; Fintech</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Theme */
+function updateIcon(){ document.getElementById('themeBtn').textContent = document.documentElement.getAttribute('data-theme')==='dark'?'☀️':'🌙'; }
+document.getElementById('themeBtn').addEventListener('click',()=>{ const n=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'; document.documentElement.setAttribute('data-theme',n); localStorage.setItem('theme',n); updateIcon(); });
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',e=>{ if(!localStorage.getItem('theme')){ document.documentElement.setAttribute('data-theme',e.matches?'dark':'light'); updateIcon(); } });
+updateIcon();
+
+/* Nav */
+const nb=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{ nb.classList.toggle('stuck',scrollY>20); updateActive(); });
+function updateActive(){ ['hero','about','skills','work','projects','testimonials','contact'].forEach(id=>{ const el=document.getElementById(id); if(!el) return; const sp=scrollY+120; if(sp>=el.offsetTop&&sp<el.offsetTop+el.offsetHeight){ document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active')); const lnk=document.querySelector(`.nav-links a[href="#${id}"]`); if(lnk) lnk.classList.add('active'); } }); }
+
+/* Mobile */
+document.getElementById('ham').addEventListener('click',()=>document.getElementById('mobMenu').classList.toggle('open'));
+function closeMob(){ document.getElementById('mobMenu').classList.remove('open'); }
+
+/* Reveal */
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('on'); }),{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+setTimeout(()=>document.querySelectorAll('#hero .reveal').forEach(el=>el.classList.add('on')),80);
+
+/* Canvas */
+const cv=document.getElementById('hCanvas'),cx=cv.getContext('2d');
+let nodes=[];
+function resize(){ cv.width=innerWidth; cv.height=innerHeight; mkNodes(); }
+function mkNodes(){ nodes=[]; const n=Math.min(Math.floor(cv.width*cv.height/13000),80); for(let i=0;i<n;i++) nodes.push({x:Math.random()*cv.width,y:Math.random()*cv.height,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.6+.8}); }
+function draw(){ cx.clearRect(0,0,cv.width,cv.height); const dark=document.documentElement.getAttribute('data-theme')==='dark'; const nc=dark?'rgba(96,165,250,.65)':'rgba(37,99,235,.45)'; const lp=dark?'rgba(96,165,250,':'rgba(37,99,235,'; const D=155; nodes.forEach(n=>{ n.x+=n.vx; n.y+=n.vy; if(n.x<0||n.x>cv.width) n.vx*=-1; if(n.y<0||n.y>cv.height) n.vy*=-1; }); for(let i=0;i<nodes.length;i++) for(let j=i+1;j<nodes.length;j++){ const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,d=Math.hypot(dx,dy); if(d<D){ cx.beginPath(); cx.strokeStyle=`${lp}${(1-d/D)*.22})`; cx.lineWidth=.7; cx.moveTo(nodes[i].x,nodes[i].y); cx.lineTo(nodes[j].x,nodes[j].y); cx.stroke(); } } nodes.forEach(n=>{ cx.beginPath(); cx.arc(n.x,n.y,n.r,0,Math.PI*2); cx.fillStyle=nc; cx.fill(); }); requestAnimationFrame(draw); }
+window.addEventListener('resize',resize); resize(); draw();
+
+/* Testimonials */
+let tIdx=0;
+const tTrack=document.getElementById('testTrack'),tDots=document.querySelectorAll('.tdot');
+function getV(){ return innerWidth<=560?1:innerWidth<=1024?2:3; }
+function moveTabs(dir){ const max=tTrack.children.length-getV(); tIdx+=dir; if(tIdx>max) tIdx=0; if(tIdx<0) tIdx=max; render(); }
+function gotoTab(i){ tIdx=i; render(); }
+function render(){ 
+  // This calculates the width of one card plus the gap (24px)
+  const gap = innerWidth <= 768 ? 0 : 24;
+  const w = tTrack.children[0] ? tTrack.children[0].offsetWidth + gap : 0; 
+  tTrack.style.transform = `translateX(-${tIdx * w}px)`; 
+  tDots.forEach((d,i) => d.classList.toggle('on', i === tIdx)); 
+}function render(){ const w=tTrack.children[0]?tTrack.children[0].offsetWidth+20:0; tTrack.style.transform=`translateX(-${tIdx*w}px)`; tDots.forEach((d,i)=>d.classList.toggle('on',i===tIdx)); }
+setInterval(()=>moveTabs(1),5500);
+window.addEventListener('resize',render);
+
+
+
+/* Copy email */
+function copyEmail(){ navigator.clipboard.writeText('asorchris2019@gmail.com').then(()=>{ const b=document.getElementById('copyBtn'); b.textContent='Copied ✓'; b.style.color='var(--accent)'; b.style.borderColor='var(--accent)'; setTimeout(()=>{ b.textContent='Copy'; b.style.color=''; b.style.borderColor=''; },2200); }); }
+
+/* Contact form — Formspree */
+const FORMSPREE_ID = 'xyklelbp'; // ← Replace with your ID from formspree.io
+
+async function sendMsg(){
+  const n=document.getElementById('fName').value.trim();
+  const e=document.getElementById('fEmail').value.trim();
+  const s=document.getElementById('fSubject').value.trim();
+  const m=document.getElementById('fMsg').value.trim();
+  const msgEl=document.getElementById('formMsg');
+  const btn=document.getElementById('sendBtn');
+  if(!n||!e||!s||!m){ msgEl.className='form-msg err'; msgEl.textContent='Please fill in all fields.'; return; }
+  if(!/\S+@\S+\.\S+/.test(e)){ msgEl.className='form-msg err'; msgEl.textContent='Please enter a valid email address.'; return; }
+  if(FORMSPREE_ID==='xyklelbp'){ msgEl.className='form-msg err'; msgEl.textContent='Form not configured yet — see the setup comment in the HTML file.'; return; }
+  btn.textContent='Sending…'; btn.disabled=true;
+  try {
+    const res=await fetch(`https://formspree.io/f/${FORMSPREE_ID}`,{ method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body:JSON.stringify({name:n,email:e,subject:s,message:m}) });
+    if(res.ok){ msgEl.className='form-msg ok'; msgEl.textContent="Message sent, I'll get back to you soon!"; ['fName','fEmail','fSubject','fMsg'].forEach(id=>document.getElementById(id).value=''); }
+    else { msgEl.className='form-msg err'; msgEl.textContent='Something went wrong. Please email me directly at asorchris2019@gmail.com'; }
+  } catch(err){ msgEl.className='form-msg err'; msgEl.textContent='Network error. Please email me directly.'; }
+  btn.innerHTML='Send Message <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2 11 13M22 2 15 22 11 13 2 9l20-7z"/></svg>';
+  btn.disabled=false;
+}
+</script>
+</body>
+</html>
